@@ -1,5 +1,5 @@
 (function () {
-  const target = new Date("2026-05-14T23:00:00Z").getTime();
+  const target = new Date("2026-05-19T23:00:00Z").getTime();
   const pads = (n) => String(Math.max(0, n)).padStart(2, "0");
   function tick() {
     const diff = Math.max(0, target - Date.now());
