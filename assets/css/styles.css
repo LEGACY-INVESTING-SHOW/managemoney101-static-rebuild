@@ -200,6 +200,14 @@ a { color: inherit; }
 .phone-row span { display: grid; place-items: center; border-right: 1px solid #ddd; font-size: 16px; }
 .phone-row input { border: 0; }
 .lead-form button { width: 100%; margin-top: 10px; }
+.form-status {
+  min-height: 1.4em;
+  margin: 0;
+  color: #9b1c1c;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.form-status.is-pending { color: #1e5b8e; }
 
 .confirm-page { background: var(--paper); color: #000; }
 .confirm-top { padding: 28px 0 32px; }

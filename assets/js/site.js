@@ -1,6 +1,85 @@
 (function () {
   const target = new Date("2026-05-19T23:00:00Z").getTime();
+  const trackingKeys = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+    "gclid",
+    "fbclid"
+  ];
   const pads = (n) => String(Math.max(0, n)).padStart(2, "0");
+
+  function setTimeZoneValue(form) {
+    const timeZoneInput = form.querySelector('input[name="time_zone"]');
+    if (!timeZoneInput) {
+      return;
+    }
+    try {
+      timeZoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    } catch (_) {
+      timeZoneInput.value = "";
+    }
+  }
+
+  function buildPayload(form) {
+    const data = new FormData(form);
+    const params = new URLSearchParams(window.location.search);
+    const firstName = String(data.get("contact[first_name]") || "");
+    const email = String(data.get("contact[email]") || "");
+    const phoneNumber = String(data.get("contact[phone_number]") || "");
+    const timeZone = String(data.get("time_zone") || "");
+    const payload = {
+      first_name: firstName,
+      email,
+      phone_number: phoneNumber,
+      time_zone: timeZone,
+      source: "fbmasterclass",
+      page_url: window.location.href,
+      page_path: window.location.pathname,
+      confirmation_url: form.dataset.successUrl || form.action,
+      submitted_at: new Date().toISOString(),
+      user_agent: navigator.userAgent,
+      "contact[first_name]": firstName,
+      "contact[email]": email,
+      "contact[phone_number]": phoneNumber
+    };
+
+    trackingKeys.forEach((key) => {
+      payload[key] = params.get(key) || "";
+    });
+
+    return payload;
+  }
+
+  async function postLead(webhookUrl, payload) {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload),
+      mode: "cors",
+      keepalive: true
+    });
+
+    if (!response.ok) {
+      throw new Error("webhook_failed");
+    }
+  }
+
+  async function postLeadFallback(webhookUrl, payload) {
+    await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=UTF-8"
+      },
+      body: JSON.stringify(payload),
+      mode: "no-cors",
+      keepalive: true
+    });
+  }
   function tick() {
     const diff = Math.max(0, target - Date.now());
     const days = Math.floor(diff / 86400000);
@@ -37,11 +116,57 @@
   });
 
   document.querySelectorAll("[data-lead-form]").forEach((form) => {
-    form.addEventListener("submit", () => {
+    setTimeZoneValue(form);
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const webhookUrl = form.dataset.webhookUrl;
+      const successUrl = form.dataset.successUrl || form.action;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const status = form.querySelector("[data-form-status]");
+      const originalButtonText = submitButton?.textContent || "";
+
+      if (!webhookUrl) {
+        window.location.assign(successUrl);
+        return;
+      }
+
+      setTimeZoneValue(form);
+      const payload = buildPayload(form);
+
       try {
-        const data = new FormData(form);
-        sessionStorage.setItem("mm101_lead", JSON.stringify(Object.fromEntries(data.entries())));
+        sessionStorage.setItem("mm101_lead", JSON.stringify(payload));
       } catch (_) {}
+
+      if (status) {
+        status.textContent = "Submitting your registration...";
+        status.classList.add("is-pending");
+      }
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
+
+      try {
+        await postLead(webhookUrl, payload);
+      } catch (_) {
+        try {
+          await postLeadFallback(webhookUrl, payload);
+        } catch (fallbackError) {
+          if (status) {
+            status.textContent = "We couldn't submit your registration. Please try again.";
+            status.classList.remove("is-pending");
+          }
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+          }
+          return;
+        }
+      }
+
+      window.location.assign(successUrl);
     });
   });
 })();
