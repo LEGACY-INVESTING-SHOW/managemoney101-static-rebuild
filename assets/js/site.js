@@ -53,32 +53,41 @@
     return payload;
   }
 
-  async function postLead(webhookUrl, payload) {
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload),
-      mode: "cors",
-      keepalive: true
-    });
-
-    if (!response.ok) {
-      throw new Error("webhook_failed");
+  function ensureWebhookFrame() {
+    let frame = document.querySelector('[data-webhook-frame]');
+    if (frame) {
+      return frame;
     }
+
+    frame = document.createElement("iframe");
+    frame.name = "zapier-webhook-target";
+    frame.setAttribute("data-webhook-frame", "true");
+    frame.hidden = true;
+    frame.tabIndex = -1;
+    document.body.appendChild(frame);
+    return frame;
   }
 
-  async function postLeadFallback(webhookUrl, payload) {
-    await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain;charset=UTF-8"
-      },
-      body: JSON.stringify(payload),
-      mode: "no-cors",
-      keepalive: true
+  function submitLeadViaForm(webhookUrl, payload) {
+    const frame = ensureWebhookFrame();
+    const transportForm = document.createElement("form");
+
+    transportForm.action = webhookUrl;
+    transportForm.method = "POST";
+    transportForm.target = frame.name;
+    transportForm.hidden = true;
+
+    Object.entries(payload).forEach(([key, value]) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = key;
+      input.value = value == null ? "" : String(value);
+      transportForm.appendChild(input);
     });
+
+    document.body.appendChild(transportForm);
+    transportForm.submit();
+    transportForm.remove();
   }
   function tick() {
     const diff = Math.max(0, target - Date.now());
@@ -149,24 +158,22 @@
       }
 
       try {
-        await postLead(webhookUrl, payload);
+        submitLeadViaForm(webhookUrl, payload);
       } catch (_) {
-        try {
-          await postLeadFallback(webhookUrl, payload);
-        } catch (fallbackError) {
-          if (status) {
-            status.textContent = "We couldn't submit your registration. Please try again.";
-            status.classList.remove("is-pending");
-          }
-          if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = originalButtonText;
-          }
-          return;
+        if (status) {
+          status.textContent = "We couldn't submit your registration. Please try again.";
+          status.classList.remove("is-pending");
         }
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+        return;
       }
 
-      window.location.assign(successUrl);
+      window.setTimeout(() => {
+        window.location.assign(successUrl);
+      }, 600);
     });
   });
 })();
