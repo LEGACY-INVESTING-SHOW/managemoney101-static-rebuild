@@ -87,7 +87,26 @@
 
     document.body.appendChild(transportForm);
     transportForm.submit();
-    transportForm.remove();
+    window.setTimeout(() => {
+      transportForm.remove();
+    }, 3000);
+  }
+
+  function submitLeadViaBeacon(webhookUrl, payload) {
+    if (typeof navigator.sendBeacon !== "function") {
+      return false;
+    }
+
+    const body = new URLSearchParams();
+    Object.entries(payload).forEach(([key, value]) => {
+      body.append(key, value == null ? "" : String(value));
+    });
+
+    const blob = new Blob([body.toString()], {
+      type: "application/x-www-form-urlencoded;charset=UTF-8"
+    });
+
+    return navigator.sendBeacon(webhookUrl, blob);
   }
   function tick() {
     const diff = Math.max(0, target - Date.now());
@@ -158,7 +177,10 @@
       }
 
       try {
-        submitLeadViaForm(webhookUrl, payload);
+        const sentWithBeacon = submitLeadViaBeacon(webhookUrl, payload);
+        if (!sentWithBeacon) {
+          submitLeadViaForm(webhookUrl, payload);
+        }
       } catch (_) {
         if (status) {
           status.textContent = "We couldn't submit your registration. Please try again.";
@@ -173,7 +195,7 @@
 
       window.setTimeout(() => {
         window.location.assign(successUrl);
-      }, 600);
+      }, 1200);
     });
   });
 })();
