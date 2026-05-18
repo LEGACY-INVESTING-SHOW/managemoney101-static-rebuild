@@ -9,7 +9,46 @@
     "gclid",
     "fbclid"
   ];
+  const trackingStorageKey = "mm101_tracking_params";
   const pads = (n) => String(Math.max(0, n)).padStart(2, "0");
+
+  function readStoredTracking() {
+    try {
+      const raw = window.localStorage.getItem(trackingStorageKey);
+      return raw ? JSON.parse(raw) : {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  function writeStoredTracking(values) {
+    try {
+      window.localStorage.setItem(trackingStorageKey, JSON.stringify(values));
+    } catch (_) {}
+  }
+
+  function persistTrackingFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const stored = readStoredTracking();
+    let hasUpdates = false;
+
+    trackingKeys.forEach((key) => {
+      const value = params.get(key);
+      if (value) {
+        stored[key] = value;
+        hasUpdates = true;
+      }
+    });
+
+    if (hasUpdates) {
+      stored.landing_page_url = window.location.href;
+      stored.landing_page_path = window.location.pathname;
+      stored.captured_at = new Date().toISOString();
+      writeStoredTracking(stored);
+    }
+
+    return stored;
+  }
 
   function setTimeZoneValue(form) {
     const timeZoneInput = form.querySelector('input[name="time_zone"]');
@@ -26,6 +65,7 @@
   function buildPayload(form) {
     const data = new FormData(form);
     const params = new URLSearchParams(window.location.search);
+    const storedTracking = readStoredTracking();
     const firstName = String(data.get("contact[first_name]") || "");
     const email = String(data.get("contact[email]") || "");
     const phoneNumber = String(data.get("contact[phone_number]") || "");
@@ -41,13 +81,16 @@
       confirmation_url: form.dataset.successUrl || form.action,
       submitted_at: new Date().toISOString(),
       user_agent: navigator.userAgent,
+      landing_page_url: storedTracking.landing_page_url || window.location.href,
+      landing_page_path: storedTracking.landing_page_path || window.location.pathname,
+      tracking_captured_at: storedTracking.captured_at || "",
       "contact[first_name]": firstName,
       "contact[email]": email,
       "contact[phone_number]": phoneNumber
     };
 
     trackingKeys.forEach((key) => {
-      payload[key] = params.get(key) || "";
+      payload[key] = params.get(key) || storedTracking[key] || "";
     });
 
     return payload;
@@ -108,6 +151,8 @@
 
     return navigator.sendBeacon(webhookUrl, blob);
   }
+  persistTrackingFromUrl();
+
   function tick() {
     const diff = Math.max(0, target - Date.now());
     const days = Math.floor(diff / 86400000);
