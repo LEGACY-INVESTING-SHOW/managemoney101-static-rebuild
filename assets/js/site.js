@@ -96,7 +96,15 @@
       element.addEventListener("mouseenter", injectScripts, { once: true, passive: true });
     });
 
-    window.setTimeout(injectScripts, 10000);
+    function scheduleLoad() {
+      window.setTimeout(injectScripts, 1500);
+    }
+
+    if (document.readyState === "complete") {
+      scheduleLoad();
+    } else {
+      window.addEventListener("load", scheduleLoad, { once: true });
+    }
   }
 
   function setTimeZoneValue(form) {
