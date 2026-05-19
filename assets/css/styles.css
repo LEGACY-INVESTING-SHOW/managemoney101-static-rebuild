@@ -20,7 +20,8 @@ body {
   background: #fff;
 }
 
-img, iframe { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; height: auto; }
+iframe { max-width: 100%; display: block; }
 button { font: inherit; }
 a { color: inherit; }
 .wrap { width: min(1110px, calc(100% - 36px)); margin: 0 auto; }
@@ -83,10 +84,10 @@ a { color: inherit; }
 .featured { text-align: center; padding: 36px 0 46px; }
 .featured h2 { margin: 0 0 16px; color: #777882; font-size: 27px; font-weight: 400; }
 .trust-line { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 auto 12px; }
-.trust { width: 150px; margin: 0; }
+.trust { width: 150px; margin: 0; height: auto; }
 .trust-excellent { color: #1c2733; font-size: 15px; font-weight: 800; line-height: 1; }
-.trust-stars { width: 145px; margin: 0; }
-.logos { width: min(520px, 92%); margin: 0 auto; border: 2px solid #bcc1c7; }
+.trust-stars { width: 145px; margin: 0; height: auto; }
+.logos { width: min(520px, 92%); margin: 0 auto; border: 2px solid #bcc1c7; height: auto; }
 
 .discover-card {
   width: min(700px, calc(100% - 36px));

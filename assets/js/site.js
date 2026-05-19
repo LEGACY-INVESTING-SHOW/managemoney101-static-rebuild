@@ -87,23 +87,16 @@
       }
     }
 
-    function scheduleLoad() {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(injectScripts, { timeout: 3000 });
-      } else {
-        window.setTimeout(injectScripts, 1500);
-      }
-    }
-
-    if (document.readyState === "complete") {
-      scheduleLoad();
-    } else {
-      window.addEventListener("load", scheduleLoad, { once: true });
-    }
-
     ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
       window.addEventListener(eventName, injectScripts, { once: true, passive: true });
     });
+
+    document.querySelectorAll("[data-open-modal], [data-lead-form]").forEach((element) => {
+      element.addEventListener("focusin", injectScripts, { once: true });
+      element.addEventListener("mouseenter", injectScripts, { once: true, passive: true });
+    });
+
+    window.setTimeout(injectScripts, 10000);
   }
 
   function setTimeZoneValue(form) {
