@@ -230,24 +230,35 @@ a { color: inherit; }
 .calendar-card h1 { font-family: Georgia, serif; font-size: 34px; margin: 34px 0 8px; }
 .calendar-card h2 { font-family: Poppins, sans-serif; font-size: 21px; margin: 0 0 24px; }
 .calendar-btn { display: inline-block; background: #ffd400; color: #000; padding: 12px 22px; border-radius: 4px; font-weight: 700; text-decoration: none; box-shadow: 0 1px 5px rgba(0,0,0,.2); }
-.custom-button {
-  display: inline-block;
-  position: relative;
-  min-width: 160px;
-  padding: 12px 24px 12px 44px;
-  background-color: #ffd700;
-  color: #000;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-family: sans-serif;
-  cursor: pointer;
+.calendar-card .addeventatc.custom-button,
+.calendar-card a.addeventatc.custom-button {
+  display: inline-block !important;
+  position: relative !important;
+  min-width: 160px !important;
+  padding: 12px 24px 12px 44px !important;
+  background: #ffd700 !important;
+  background-color: #ffd700 !important;
+  color: #000 !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 5px rgba(0,0,0,.2) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  font-family: Arial, sans-serif !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-shadow: none !important;
+  cursor: pointer !important;
 }
-.custom-button:hover { background-color: #ffc300; }
-.addeventatc .addeventatc_icon,
-.addeventatc .addevent-icon {
+.calendar-card .addeventatc.custom-button:hover,
+.calendar-card a.addeventatc.custom-button:hover {
+  background: #ffc300 !important;
+  background-color: #ffc300 !important;
+  color: #000 !important;
+}
+.calendar-card .addeventatc.custom-button .addeventatc_icon,
+.calendar-card .addeventatc.custom-button .addevent-icon {
   position: absolute;
   left: 14px;
   top: 50%;
