@@ -96,7 +96,7 @@ a { color: inherit; }
   border-radius: 9px;
   background:
     linear-gradient(rgba(22,35,48,.96), rgba(0,0,0,.95)),
-    url("../img/15195213-ff766b63.jpg") center bottom / cover;
+    url("../img/optimized/discover-bg-900.webp") center bottom / cover;
   box-shadow: 0 0 12px rgba(8,22,35,.8);
 }
 .discover-card h2 { margin: 0 0 22px; color: var(--cream); font-size: 43px; text-align: center; }
@@ -108,7 +108,7 @@ a { color: inherit; }
   color: #fff;
   background:
     linear-gradient(90deg, rgba(7,16,24,.92) 0%, rgba(32,51,72,.9) 100%),
-    url("../img/15195197-3ac78c7e.png") center / cover;
+    url("../img/optimized/host-bg-1440.webp") center / cover;
   padding: 48px 0 62px;
 }
 .host-grid { display: grid; grid-template-columns: 1fr 360px; gap: 72px; align-items: center; }
@@ -141,6 +141,14 @@ a { color: inherit; }
 .comment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 90px; width: min(930px, 100%); margin: 0 auto 58px; text-align: left; }
 .screenshot-grid { grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: 20px 72px; align-items: start; }
 .screenshot-grid img { width: 100%; height: auto; }
+
+.host,
+.tools,
+.testimonials,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
 
 .footer {
   padding: 52px 0 74px;
