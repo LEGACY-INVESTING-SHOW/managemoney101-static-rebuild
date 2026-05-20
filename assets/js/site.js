@@ -10,6 +10,7 @@
     "fbclid"
   ];
   const trackingStorageKey = "mm101_tracking_params";
+  const trackingFallbackDelay = 3000;
   const pads = (n) => String(Math.max(0, n)).padStart(2, "0");
 
   function readStoredTracking() {
@@ -87,6 +88,8 @@
       }
     }
 
+    window.__mm101LoadTracking = injectScripts;
+
     ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
       window.addEventListener(eventName, injectScripts, { once: true, passive: true });
     });
@@ -97,7 +100,7 @@
     });
 
     function scheduleLoad() {
-      window.setTimeout(injectScripts, 1500);
+      window.setTimeout(injectScripts, trackingFallbackDelay);
     }
 
     if (document.readyState === "complete") {
@@ -208,6 +211,42 @@
 
     return navigator.sendBeacon(webhookUrl, blob);
   }
+
+  function storeLeadForTracking(payload) {
+    const name = payload.first_name || "";
+    const email = payload.email || "";
+    const phone = payload.phone_number || "";
+    const values = {
+      mm101_lead: JSON.stringify(payload),
+      name,
+      firstName: name,
+      firstNameLead: name,
+      email,
+      emailLead: email,
+      phone
+    };
+
+    Object.entries(values).forEach(([key, value]) => {
+      try {
+        window.localStorage.setItem(key, value);
+      } catch (_) {}
+      try {
+        window.sessionStorage.setItem(key, value);
+      } catch (_) {}
+    });
+  }
+
+  function pushRegistrationEvent(payload) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "mm101_registration_submit",
+      first_name: payload.first_name || "",
+      email: payload.email || "",
+      phone: payload.phone_number || "",
+      source: payload.source || "fbmasterclass",
+      page_path: payload.page_path || window.location.pathname
+    });
+  }
   persistTrackingFromUrl();
   loadDeferredTracking();
 
@@ -266,9 +305,9 @@
       setTimeZoneValue(form);
       const payload = buildPayload(form);
 
-      try {
-        sessionStorage.setItem("mm101_lead", JSON.stringify(payload));
-      } catch (_) {}
+      window.__mm101LoadTracking?.();
+      storeLeadForTracking(payload);
+      pushRegistrationEvent(payload);
 
       if (status) {
         status.textContent = "Submitting your registration...";
