@@ -2,5 +2,5 @@
 
 Static rebuild of the ManageMoney101 masterclass registration and confirmation pages.
 
-- Registration: `/fbmasterclass/`
-- Confirmation: `/masterclassconfirmation/`
+- Registration: `/taxtraining/`
+- Confirmation: `/registered/`

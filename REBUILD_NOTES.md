@@ -11,8 +11,8 @@
 
 ## Source Pages Captured
 
-- `https://www.managemoney101.com/fbmasterclass`
-- `https://www.managemoney101.com/masterclassconfirmation`
+- `https://masterclass.managemoney101.com/taxtraining`
+- `https://masterclass.managemoney101.com/registered`
 
 Original screenshots and extracted DOM/network data are saved in `captures/original/`.
 Local verification screenshots and reports are saved in `captures/local/`.
@@ -26,7 +26,7 @@ The rebuild intentionally removes ClickFunnels runtime bundles, New Relic, track
 
 The live ClickFunnels hidden form endpoint is:
 
-- `POST https://www.managemoney101.com/fbmasterclass`
+- `POST https://masterclass.managemoney101.com/taxtraining`
 
 The visible popup fields captured from the live page are:
 
@@ -34,7 +34,7 @@ The visible popup fields captured from the live page are:
 - `contact[email]`
 - `contact[phone_number]`
 
-The local rebuilt form preserves those field names and the popup behavior, but it submits with `GET` to `../masterclassconfirmation/index.html` instead of posting test contacts to the live ClickFunnels endpoint. This is the closest safe static-compatible behavior without altering live ClickFunnels data.
+The local rebuilt form preserves those field names and the popup behavior, but it submits with `GET` to `/registered` instead of posting test contacts to the live ClickFunnels endpoint. This is the closest safe static-compatible behavior without altering live ClickFunnels data.
 
 ## Confirmation Page Behavior
 
@@ -76,4 +76,4 @@ The page paths are relative, not localhost or root-relative:
 - Double-click `fbmasterclass/index.html` to open the registration page.
 - Double-click `masterclassconfirmation/index.html` to open the confirmation page.
 
-The registration form action points to `../masterclassconfirmation/index.html`, so it also routes correctly when opened from Finder.
+The registration form action points to `/registered`, so it also routes correctly once deployed on Vercel.
