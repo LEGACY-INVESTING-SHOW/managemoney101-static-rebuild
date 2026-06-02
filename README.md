@@ -4,3 +4,5 @@ Static rebuild of the ManageMoney101 masterclass registration and confirmation p
 
 - Registration: `/taxtraining/`
 - Confirmation: `/registered/`
+
+Live host: `https://lwb.managemoney101.com`

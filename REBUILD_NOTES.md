@@ -11,8 +11,8 @@
 
 ## Source Pages Captured
 
-- `https://masterclass.managemoney101.com/taxtraining`
-- `https://masterclass.managemoney101.com/registered`
+- `https://lwb.managemoney101.com/taxtraining`
+- `https://lwb.managemoney101.com/registered`
 
 Original screenshots and extracted DOM/network data are saved in `captures/original/`.
 Local verification screenshots and reports are saved in `captures/local/`.
@@ -26,7 +26,7 @@ The rebuild intentionally removes ClickFunnels runtime bundles, New Relic, track
 
 The live ClickFunnels hidden form endpoint is:
 
-- `POST https://masterclass.managemoney101.com/taxtraining`
+- `POST https://lwb.managemoney101.com/taxtraining`
 
 The visible popup fields captured from the live page are:
 
