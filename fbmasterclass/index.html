@@ -156,7 +156,10 @@
       <form class="lead-form" data-lead-form data-webhook-url="https://hooks.zapier.com/hooks/catch/9914831/4obsvyn/" data-success-url="https://lwb.managemoney101.com/taxtrainingconfirmation" action="/taxtrainingconfirmation" method="get">
         <input name="contact[first_name]" data-cf-form-field="first_name" placeholder="First Name" autocomplete="given-name" required>
         <input name="contact[email]" data-cf-form-field="email" placeholder="Email" type="email" autocomplete="email" required>
-        <label class="phone-row"><input id="lead-phone" name="contact[phone_number]" data-cf-form-field="phone_number" placeholder="Phone" type="tel" autocomplete="tel"></label>
+        <div class="phone-row" data-phone-field>
+          <input id="lead-phone-display" data-phone-display placeholder="Phone" type="tel" autocomplete="tel">
+        </div>
+        <input type="hidden" name="contact[phone_number]" data-cf-form-field="phone_number">
         <input type="hidden" name="time_zone" value="">
         <p class="form-status" data-form-status aria-live="polite"></p>
         <button class="cta gold" type="submit">Register Now</button>

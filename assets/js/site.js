@@ -74,8 +74,26 @@
     return "";
   }
 
+  function waitForIntlTelInput(attempts = 20) {
+    return new Promise((resolve) => {
+      if (typeof window.intlTelInput === "function") {
+        resolve(true);
+        return;
+      }
+
+      if (attempts <= 0) {
+        resolve(false);
+        return;
+      }
+
+      window.setTimeout(() => {
+        waitForIntlTelInput(attempts - 1).then(resolve);
+      }, 150);
+    });
+  }
+
   function setupPhoneInput(form) {
-    const phoneInput = form.querySelector('input[name="contact[phone_number]"]');
+    const phoneInput = form.querySelector("[data-phone-display]");
     if (!phoneInput || typeof window.intlTelInput !== "function") {
       return null;
     }
@@ -103,7 +121,7 @@
     const storedTracking = readStoredTracking();
     const firstName = String(data.get("contact[first_name]") || "");
     const email = String(data.get("contact[email]") || "");
-    const phoneInput = form.querySelector('input[name="contact[phone_number]"]');
+    const phoneInput = form.querySelector("[data-phone-display]");
     const phoneInstance = phoneInput ? phoneInputInstances.get(phoneInput) : null;
     let phoneNumber = String(data.get("contact[phone_number]") || "");
     const timeZone = String(data.get("time_zone") || "");
@@ -271,7 +289,6 @@
   });
 
   document.querySelectorAll("[data-lead-form]").forEach((form) => {
-    setupPhoneInput(form);
     setTimeZoneValue(form);
 
     form.addEventListener("submit", async (event) => {
@@ -282,7 +299,12 @@
       const submitButton = form.querySelector('button[type="submit"]');
       const status = form.querySelector("[data-form-status]");
       const originalButtonText = submitButton?.textContent || "";
-      const phoneInput = form.querySelector('input[name="contact[phone_number]"]');
+      const hiddenPhoneInput = form.querySelector('input[name="contact[phone_number]"]');
+      const phoneInput = form.querySelector("[data-phone-display]");
+      const intlReady = await waitForIntlTelInput();
+      if (intlReady) {
+        setupPhoneInput(form);
+      }
       const phoneInstance = phoneInput ? phoneInputInstances.get(phoneInput) : null;
 
       if (!webhookUrl) {
@@ -312,6 +334,16 @@
           phoneInput.focus();
           return;
         }
+      }
+
+      if (hiddenPhoneInput) {
+        let formattedPhone = phoneInput?.value.trim() || "";
+        if (formattedPhone && phoneInstance) {
+          try {
+            formattedPhone = phoneInstance.getNumber() || formattedPhone;
+          } catch (_) {}
+        }
+        hiddenPhoneInput.value = formattedPhone;
       }
 
       const payload = buildPayload(form);
@@ -348,6 +380,15 @@
       window.setTimeout(() => {
         window.location.assign(successUrl);
       }, 1200);
+    });
+  });
+
+  waitForIntlTelInput().then((isReady) => {
+    if (!isReady) {
+      return;
+    }
+    document.querySelectorAll("[data-lead-form]").forEach((form) => {
+      setupPhoneInput(form);
     });
   });
 })();

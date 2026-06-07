@@ -209,33 +209,44 @@ a { color: inherit; }
   display: block;
   width: 100%;
 }
-.phone-row input {
-  border: 0;
-}
-.iti {
+.phone-row .iti,
+.phone-row .iti--allow-dropdown,
+.phone-row .iti--separate-dial-code {
   width: 100%;
 }
-.iti__tel-input {
+.phone-row .iti__tel-input {
   width: 100%;
   height: 40px;
   padding-right: 14px;
+  border: 1px solid #c9c9c9 !important;
+  border-radius: 4px !important;
+  background: #fff;
   font: inherit;
   font-size: 14px;
+  color: #1c2733;
 }
-.iti--separate-dial-code .iti__selected-country {
+.phone-row .iti--separate-dial-code .iti__selected-country {
   border: 1px solid #c9c9c9;
   border-right: 0;
   border-radius: 4px 0 0 4px;
   background: #fff;
 }
-.iti--separate-dial-code .iti__tel-input,
-.iti--show-flags .iti__tel-input {
-  border-radius: 4px;
+.phone-row .iti--separate-dial-code .iti__tel-input {
+  border-left: 0 !important;
+  border-radius: 0 4px 4px 0 !important;
 }
-.iti__country-container {
-  z-index: 3;
+.phone-row .iti__country-container {
+  z-index: 4;
 }
-.iti__search-input {
+.phone-row .iti__selected-country-primary,
+.phone-row .iti__selected-dial-code,
+.phone-row .iti__arrow {
+  color: #1c2733;
+}
+.phone-row .iti__dropdown-content {
+  z-index: 30;
+}
+.phone-row .iti__search-input {
   height: 36px;
 }
 .lead-form button { width: 100%; margin-top: 10px; }
