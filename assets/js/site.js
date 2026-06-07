@@ -104,11 +104,10 @@
     }
 
     const iti = window.intlTelInput(phoneInput, {
-      initialCountry: getInitialCountryFromLocale(),
+      initialCountry: getInitialCountryFromLocale() || "us",
       separateDialCode: true,
       strictMode: true,
-      dropdownParent: document.body,
-      loadUtils: () => import("https://cdn.jsdelivr.net/npm/intl-tel-input@26.5.0/dist/js/utils.js")
+      dropdownParent: document.body
     });
 
     phoneInputInstances.set(phoneInput, iti);
