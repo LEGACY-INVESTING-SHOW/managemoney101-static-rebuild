@@ -12,7 +12,7 @@
 ## Source Pages Captured
 
 - `https://lwb.managemoney101.com/taxtraining`
-- `https://lwb.managemoney101.com/registered`
+- `https://lwb.managemoney101.com/taxtrainingconfirmation`
 
 Original screenshots and extracted DOM/network data are saved in `captures/original/`.
 Local verification screenshots and reports are saved in `captures/local/`.
@@ -34,7 +34,7 @@ The visible popup fields captured from the live page are:
 - `contact[email]`
 - `contact[phone_number]`
 
-The local rebuilt form preserves those field names and the popup behavior, but it submits with `GET` to `/registered` instead of posting test contacts to the live ClickFunnels endpoint. This is the closest safe static-compatible behavior without altering live ClickFunnels data.
+The local rebuilt form preserves those field names and the popup behavior, but it submits with `GET` to `/taxtrainingconfirmation` instead of posting test contacts to the live ClickFunnels endpoint. This is the closest safe static-compatible behavior without altering live ClickFunnels data.
 
 ## Confirmation Page Behavior
 
@@ -76,4 +76,4 @@ The page paths are relative, not localhost or root-relative:
 - Double-click `fbmasterclass/index.html` to open the registration page.
 - Double-click `masterclassconfirmation/index.html` to open the confirmation page.
 
-The registration form action points to `/registered`, so it also routes correctly once deployed on Vercel.
+The registration form action points to `/taxtrainingconfirmation`, so it also routes correctly once deployed on Vercel.

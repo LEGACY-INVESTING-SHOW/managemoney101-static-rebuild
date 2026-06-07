@@ -9,7 +9,12 @@
     },
     {
       "source": "/masterclassconfirmation",
-      "destination": "/registered",
+      "destination": "/taxtrainingconfirmation",
+      "permanent": true
+    },
+    {
+      "source": "/registered",
+      "destination": "/taxtrainingconfirmation",
       "permanent": true
     }
   ],
@@ -19,7 +24,7 @@
       "destination": "/fbmasterclass"
     },
     {
-      "source": "/registered",
+      "source": "/taxtrainingconfirmation",
       "destination": "/masterclassconfirmation"
     }
   ],
