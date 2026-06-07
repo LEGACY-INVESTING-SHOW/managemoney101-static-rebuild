@@ -10,7 +10,6 @@
     "fbclid"
   ];
   const trackingStorageKey = "mm101_tracking_params";
-  const trackingFallbackDelay = 3000;
   const pads = (n) => String(Math.max(0, n)).padStart(2, "0");
 
   function readStoredTracking() {
@@ -49,65 +48,6 @@
     }
 
     return stored;
-  }
-
-  function loadDeferredTracking() {
-    const root = document.body;
-    if (!root?.dataset.deferTracking) {
-      return;
-    }
-
-    const gtmId = root.dataset.gtmId || "";
-    const trackingPh = root.dataset.trackingPh || "";
-    const startedAt = Date.now();
-
-    function injectScripts() {
-      if (window.__mm101TrackingLoaded) {
-        return;
-      }
-      window.__mm101TrackingLoaded = true;
-
-      if (gtmId) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          "gtm.start": startedAt,
-          event: "gtm.js"
-        });
-
-        const gtmScript = document.createElement("script");
-        gtmScript.async = true;
-        gtmScript.src = "https://tracking.managemoney101.com/gtm.js?id=" + encodeURIComponent(gtmId);
-        document.head.appendChild(gtmScript);
-      }
-
-      if (trackingPh) {
-        const trackerScript = document.createElement("script");
-        trackerScript.async = true;
-        trackerScript.src = "https://t.managemoney101.com/v1/lst/universal-script?ph=" + encodeURIComponent(trackingPh) + "&tag=!clicked&ref_url=" + encodeURIComponent(window.location.href);
-        document.head.appendChild(trackerScript);
-      }
-    }
-
-    window.__mm101LoadTracking = injectScripts;
-
-    ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
-      window.addEventListener(eventName, injectScripts, { once: true, passive: true });
-    });
-
-    document.querySelectorAll("[data-open-modal], [data-lead-form]").forEach((element) => {
-      element.addEventListener("focusin", injectScripts, { once: true });
-      element.addEventListener("mouseenter", injectScripts, { once: true, passive: true });
-    });
-
-    function scheduleLoad() {
-      window.setTimeout(injectScripts, trackingFallbackDelay);
-    }
-
-    if (document.readyState === "complete") {
-      scheduleLoad();
-    } else {
-      window.addEventListener("load", scheduleLoad, { once: true });
-    }
   }
 
   function setTimeZoneValue(form) {
@@ -248,7 +188,6 @@
     });
   }
   persistTrackingFromUrl();
-  loadDeferredTracking();
 
   function tick() {
     const diff = Math.max(0, target - Date.now());
@@ -305,7 +244,6 @@
       setTimeZoneValue(form);
       const payload = buildPayload(form);
 
-      window.__mm101LoadTracking?.();
       storeLeadForTracking(payload);
       pushRegistrationEvent(payload);
 
