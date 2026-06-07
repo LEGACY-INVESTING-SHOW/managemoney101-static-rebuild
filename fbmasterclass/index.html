@@ -19,6 +19,7 @@
   script.src = "https://t.managemoney101.com/v1/lst/universal-script?ph=99701b257ae8a5117ba5d7b516261da603bc86a49c0c42f398c619e251026c05&tag=!clicked&ref_url=" + encodeURI(document.URL);
   head.appendChild(script);
   </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@26.5.0/dist/css/intlTelInput.css">
   <link rel="preload" as="image" href="../assets/img/optimized/hero-photo-600.webp" type="image/webp">
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
@@ -155,13 +156,14 @@
       <form class="lead-form" data-lead-form data-webhook-url="https://hooks.zapier.com/hooks/catch/9914831/4obsvyn/" data-success-url="https://lwb.managemoney101.com/taxtrainingconfirmation" action="/taxtrainingconfirmation" method="get">
         <input name="contact[first_name]" data-cf-form-field="first_name" placeholder="First Name" autocomplete="given-name" required>
         <input name="contact[email]" data-cf-form-field="email" placeholder="Email" type="email" autocomplete="email" required>
-        <label class="phone-row"><span>🇮🇳</span><input name="contact[phone_number]" data-cf-form-field="phone_number" placeholder="Phone" type="tel" autocomplete="tel"></label>
+        <label class="phone-row"><input id="lead-phone" name="contact[phone_number]" data-cf-form-field="phone_number" placeholder="Phone" type="tel" autocomplete="tel"></label>
         <input type="hidden" name="time_zone" value="">
         <p class="form-status" data-form-status aria-live="polite"></p>
         <button class="cta gold" type="submit">Register Now</button>
       </form>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@26.5.0/dist/js/intlTelInput.min.js" defer></script>
   <script src="../assets/js/site.js" defer></script>
 </body>
 </html>

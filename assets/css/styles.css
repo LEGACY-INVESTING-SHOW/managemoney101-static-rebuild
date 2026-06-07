@@ -205,9 +205,39 @@ a { color: inherit; }
   font: inherit;
   font-size: 14px;
 }
-.phone-row { display: grid; grid-template-columns: 45px 1fr; border: 1px solid #c9c9c9; border-radius: 4px; }
-.phone-row span { display: grid; place-items: center; border-right: 1px solid #ddd; font-size: 16px; }
-.phone-row input { border: 0; }
+.phone-row {
+  display: block;
+  width: 100%;
+}
+.phone-row input {
+  border: 0;
+}
+.iti {
+  width: 100%;
+}
+.iti__tel-input {
+  width: 100%;
+  height: 40px;
+  padding-right: 14px;
+  font: inherit;
+  font-size: 14px;
+}
+.iti--separate-dial-code .iti__selected-country {
+  border: 1px solid #c9c9c9;
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+  background: #fff;
+}
+.iti--separate-dial-code .iti__tel-input,
+.iti--show-flags .iti__tel-input {
+  border-radius: 4px;
+}
+.iti__country-container {
+  z-index: 3;
+}
+.iti__search-input {
+  height: 36px;
+}
 .lead-form button { width: 100%; margin-top: 10px; }
 .form-status {
   min-height: 1.4em;

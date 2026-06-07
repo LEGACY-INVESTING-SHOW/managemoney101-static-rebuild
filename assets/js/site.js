@@ -1,5 +1,6 @@
 (function () {
   const target = new Date("2026-06-09T23:00:00Z").getTime();
+  const phoneInputInstances = new WeakMap();
   const trackingKeys = [
     "utm_source",
     "utm_medium",
@@ -62,14 +63,59 @@
     }
   }
 
+  function getInitialCountryFromLocale() {
+    const locales = [navigator.language].concat(navigator.languages || []);
+    for (const locale of locales) {
+      const match = String(locale || "").match(/-([a-z]{2})$/i);
+      if (match) {
+        return match[1].toLowerCase();
+      }
+    }
+    return "";
+  }
+
+  function setupPhoneInput(form) {
+    const phoneInput = form.querySelector('input[name="contact[phone_number]"]');
+    if (!phoneInput || typeof window.intlTelInput !== "function") {
+      return null;
+    }
+
+    const existing = phoneInputInstances.get(phoneInput);
+    if (existing) {
+      return existing;
+    }
+
+    const iti = window.intlTelInput(phoneInput, {
+      initialCountry: getInitialCountryFromLocale(),
+      separateDialCode: true,
+      strictMode: true,
+      dropdownParent: document.body,
+      loadUtils: () => import("https://cdn.jsdelivr.net/npm/intl-tel-input@26.5.0/dist/js/utils.js")
+    });
+
+    phoneInputInstances.set(phoneInput, iti);
+    return iti;
+  }
+
   function buildPayload(form) {
     const data = new FormData(form);
     const params = new URLSearchParams(window.location.search);
     const storedTracking = readStoredTracking();
     const firstName = String(data.get("contact[first_name]") || "");
     const email = String(data.get("contact[email]") || "");
-    const phoneNumber = String(data.get("contact[phone_number]") || "");
+    const phoneInput = form.querySelector('input[name="contact[phone_number]"]');
+    const phoneInstance = phoneInput ? phoneInputInstances.get(phoneInput) : null;
+    let phoneNumber = String(data.get("contact[phone_number]") || "");
     const timeZone = String(data.get("time_zone") || "");
+
+    if (phoneNumber && phoneInstance) {
+      try {
+        if (typeof phoneInstance.isValidNumber === "function" && phoneInstance.isValidNumber()) {
+          phoneNumber = phoneInstance.getNumber();
+        }
+      } catch (_) {}
+    }
+
     const payload = {
       first_name: firstName,
       email,
@@ -225,6 +271,7 @@
   });
 
   document.querySelectorAll("[data-lead-form]").forEach((form) => {
+    setupPhoneInput(form);
     setTimeZoneValue(form);
 
     form.addEventListener("submit", async (event) => {
@@ -235,6 +282,8 @@
       const submitButton = form.querySelector('button[type="submit"]');
       const status = form.querySelector("[data-form-status]");
       const originalButtonText = submitButton?.textContent || "";
+      const phoneInput = form.querySelector('input[name="contact[phone_number]"]');
+      const phoneInstance = phoneInput ? phoneInputInstances.get(phoneInput) : null;
 
       if (!webhookUrl) {
         window.location.assign(successUrl);
@@ -242,6 +291,29 @@
       }
 
       setTimeZoneValue(form);
+
+      if (phoneInstance?.promise) {
+        try {
+          await phoneInstance.promise;
+        } catch (_) {}
+      }
+
+      if (phoneInput && phoneInput.value.trim() && phoneInstance) {
+        let isValidPhone = true;
+        try {
+          isValidPhone = phoneInstance.isValidNumber();
+        } catch (_) {}
+
+        if (!isValidPhone) {
+          if (status) {
+            status.textContent = "Please enter a valid phone number with the correct country code.";
+            status.classList.remove("is-pending");
+          }
+          phoneInput.focus();
+          return;
+        }
+      }
+
       const payload = buildPayload(form);
 
       storeLeadForTracking(payload);
