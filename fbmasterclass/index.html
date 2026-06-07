@@ -19,7 +19,6 @@
   script.src = "https://t.managemoney101.com/v1/lst/universal-script?ph=99701b257ae8a5117ba5d7b516261da603bc86a49c0c42f398c619e251026c05&tag=!clicked&ref_url=" + encodeURI(document.URL);
   head.appendChild(script);
   </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@26.5.0/dist/css/intlTelInput.css">
   <link rel="preload" as="image" href="../assets/img/optimized/hero-photo-600.webp" type="image/webp">
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
@@ -157,7 +156,8 @@
         <input name="contact[first_name]" data-cf-form-field="first_name" placeholder="First Name" autocomplete="given-name" required>
         <input name="contact[email]" data-cf-form-field="email" placeholder="Email" type="email" autocomplete="email" required>
         <div class="phone-row" data-phone-field>
-          <input id="lead-phone-display" data-phone-display placeholder="Phone" type="tel" autocomplete="tel">
+          <select data-phone-country aria-label="Country code"></select>
+          <input data-phone-display placeholder="Phone number" type="tel" autocomplete="tel">
         </div>
         <input type="hidden" name="contact[phone_number]" data-cf-form-field="phone_number">
         <input type="hidden" name="time_zone" value="">
@@ -166,8 +166,6 @@
       </form>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@26.5.0/dist/js/intlTelInput.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@26.5.0/dist/js/utils.js"></script>
   <script src="../assets/js/site.js"></script>
 </body>
 </html>

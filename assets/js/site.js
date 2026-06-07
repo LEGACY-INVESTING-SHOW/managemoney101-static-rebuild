@@ -1,6 +1,5 @@
 (function () {
   const target = new Date("2026-06-09T23:00:00Z").getTime();
-  const phoneInputInstances = new WeakMap();
   const trackingKeys = [
     "utm_source",
     "utm_medium",
@@ -11,6 +10,51 @@
     "fbclid"
   ];
   const trackingStorageKey = "mm101_tracking_params";
+  const phoneCountryOptions = [
+    { iso2: "us", label: "United States", dialCode: "+1" },
+    { iso2: "ca", label: "Canada", dialCode: "+1" },
+    { iso2: "gb", label: "United Kingdom", dialCode: "+44" },
+    { iso2: "au", label: "Australia", dialCode: "+61" },
+    { iso2: "nz", label: "New Zealand", dialCode: "+64" },
+    { iso2: "ie", label: "Ireland", dialCode: "+353" },
+    { iso2: "in", label: "India", dialCode: "+91" },
+    { iso2: "sg", label: "Singapore", dialCode: "+65" },
+    { iso2: "ae", label: "United Arab Emirates", dialCode: "+971" },
+    { iso2: "sa", label: "Saudi Arabia", dialCode: "+966" },
+    { iso2: "qa", label: "Qatar", dialCode: "+974" },
+    { iso2: "kw", label: "Kuwait", dialCode: "+965" },
+    { iso2: "za", label: "South Africa", dialCode: "+27" },
+    { iso2: "ng", label: "Nigeria", dialCode: "+234" },
+    { iso2: "ke", label: "Kenya", dialCode: "+254" },
+    { iso2: "mx", label: "Mexico", dialCode: "+52" },
+    { iso2: "br", label: "Brazil", dialCode: "+55" },
+    { iso2: "ar", label: "Argentina", dialCode: "+54" },
+    { iso2: "cl", label: "Chile", dialCode: "+56" },
+    { iso2: "co", label: "Colombia", dialCode: "+57" },
+    { iso2: "de", label: "Germany", dialCode: "+49" },
+    { iso2: "fr", label: "France", dialCode: "+33" },
+    { iso2: "es", label: "Spain", dialCode: "+34" },
+    { iso2: "it", label: "Italy", dialCode: "+39" },
+    { iso2: "nl", label: "Netherlands", dialCode: "+31" },
+    { iso2: "be", label: "Belgium", dialCode: "+32" },
+    { iso2: "se", label: "Sweden", dialCode: "+46" },
+    { iso2: "no", label: "Norway", dialCode: "+47" },
+    { iso2: "dk", label: "Denmark", dialCode: "+45" },
+    { iso2: "ch", label: "Switzerland", dialCode: "+41" },
+    { iso2: "pl", label: "Poland", dialCode: "+48" },
+    { iso2: "pt", label: "Portugal", dialCode: "+351" },
+    { iso2: "gr", label: "Greece", dialCode: "+30" },
+    { iso2: "tr", label: "Turkey", dialCode: "+90" },
+    { iso2: "jp", label: "Japan", dialCode: "+81" },
+    { iso2: "kr", label: "South Korea", dialCode: "+82" },
+    { iso2: "cn", label: "China", dialCode: "+86" },
+    { iso2: "hk", label: "Hong Kong", dialCode: "+852" },
+    { iso2: "tw", label: "Taiwan", dialCode: "+886" },
+    { iso2: "my", label: "Malaysia", dialCode: "+60" },
+    { iso2: "th", label: "Thailand", dialCode: "+66" },
+    { iso2: "id", label: "Indonesia", dialCode: "+62" },
+    { iso2: "ph", label: "Philippines", dialCode: "+63" }
+  ];
   const pads = (n) => String(Math.max(0, n)).padStart(2, "0");
 
   function readStoredTracking() {
@@ -74,44 +118,20 @@
     return "";
   }
 
-  function waitForIntlTelInput(attempts = 20) {
-    return new Promise((resolve) => {
-      if (typeof window.intlTelInput === "function") {
-        resolve(true);
-        return;
-      }
-
-      if (attempts <= 0) {
-        resolve(false);
-        return;
-      }
-
-      window.setTimeout(() => {
-        waitForIntlTelInput(attempts - 1).then(resolve);
-      }, 150);
-    });
-  }
-
-  function setupPhoneInput(form) {
-    const phoneInput = form.querySelector("[data-phone-display]");
-    if (!phoneInput || typeof window.intlTelInput !== "function") {
-      return null;
+  function setupPhoneField(form) {
+    const countrySelect = form.querySelector("[data-phone-country]");
+    if (!countrySelect || countrySelect.options.length) {
+      return;
     }
 
-    const existing = phoneInputInstances.get(phoneInput);
-    if (existing) {
-      return existing;
-    }
-
-    const iti = window.intlTelInput(phoneInput, {
-      initialCountry: getInitialCountryFromLocale() || "us",
-      separateDialCode: true,
-      strictMode: true,
-      dropdownParent: document.body
+    const initialCountry = getInitialCountryFromLocale() || "us";
+    phoneCountryOptions.forEach((country) => {
+      const option = document.createElement("option");
+      option.value = country.dialCode;
+      option.textContent = `${country.label} (${country.dialCode})`;
+      option.selected = country.iso2 === initialCountry;
+      countrySelect.appendChild(option);
     });
-
-    phoneInputInstances.set(phoneInput, iti);
-    return iti;
   }
 
   function buildPayload(form) {
@@ -120,18 +140,8 @@
     const storedTracking = readStoredTracking();
     const firstName = String(data.get("contact[first_name]") || "");
     const email = String(data.get("contact[email]") || "");
-    const phoneInput = form.querySelector("[data-phone-display]");
-    const phoneInstance = phoneInput ? phoneInputInstances.get(phoneInput) : null;
     let phoneNumber = String(data.get("contact[phone_number]") || "");
     const timeZone = String(data.get("time_zone") || "");
-
-    if (phoneNumber && phoneInstance) {
-      try {
-        if (typeof phoneInstance.isValidNumber === "function" && phoneInstance.isValidNumber()) {
-          phoneNumber = phoneInstance.getNumber();
-        }
-      } catch (_) {}
-    }
 
     const payload = {
       first_name: firstName,
@@ -288,6 +298,7 @@
   });
 
   document.querySelectorAll("[data-lead-form]").forEach((form) => {
+    setupPhoneField(form);
     setTimeZoneValue(form);
 
     form.addEventListener("submit", async (event) => {
@@ -300,11 +311,7 @@
       const originalButtonText = submitButton?.textContent || "";
       const hiddenPhoneInput = form.querySelector('input[name="contact[phone_number]"]');
       const phoneInput = form.querySelector("[data-phone-display]");
-      const intlReady = await waitForIntlTelInput();
-      if (intlReady) {
-        setupPhoneInput(form);
-      }
-      const phoneInstance = phoneInput ? phoneInputInstances.get(phoneInput) : null;
+      const countrySelect = form.querySelector("[data-phone-country]");
 
       if (!webhookUrl) {
         window.location.assign(successUrl);
@@ -313,36 +320,21 @@
 
       setTimeZoneValue(form);
 
-      if (phoneInstance?.promise) {
-        try {
-          await phoneInstance.promise;
-        } catch (_) {}
-      }
+      if (hiddenPhoneInput) {
+        const dialCode = String(countrySelect?.value || "");
+        const rawPhone = String(phoneInput?.value || "");
+        const cleanedPhone = rawPhone.replace(/[^\d]/g, "");
 
-      if (phoneInput && phoneInput.value.trim() && phoneInstance) {
-        let isValidPhone = true;
-        try {
-          isValidPhone = phoneInstance.isValidNumber();
-        } catch (_) {}
-
-        if (!isValidPhone) {
+        if (cleanedPhone && cleanedPhone.length < 6) {
           if (status) {
-            status.textContent = "Please enter a valid phone number with the correct country code.";
+            status.textContent = "Please enter a valid phone number.";
             status.classList.remove("is-pending");
           }
-          phoneInput.focus();
+          phoneInput?.focus();
           return;
         }
-      }
 
-      if (hiddenPhoneInput) {
-        let formattedPhone = phoneInput?.value.trim() || "";
-        if (formattedPhone && phoneInstance) {
-          try {
-            formattedPhone = phoneInstance.getNumber() || formattedPhone;
-          } catch (_) {}
-        }
-        hiddenPhoneInput.value = formattedPhone;
+        hiddenPhoneInput.value = cleanedPhone ? `${dialCode}${cleanedPhone}` : "";
       }
 
       const payload = buildPayload(form);
@@ -382,12 +374,4 @@
     });
   });
 
-  waitForIntlTelInput().then((isReady) => {
-    if (!isReady) {
-      return;
-    }
-    document.querySelectorAll("[data-lead-form]").forEach((form) => {
-      setupPhoneInput(form);
-    });
-  });
 })();
