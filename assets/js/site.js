@@ -10,7 +10,7 @@
     "fbclid"
   ];
   const trackingStorageKey = "mm101_tracking_params";
-  const phoneCountryOptions = [
+  const fallbackPhoneCountryOptions = [
     { iso2: "us", label: "United States", dialCode: "+1" },
     { iso2: "ca", label: "Canada", dialCode: "+1" },
     { iso2: "gb", label: "United Kingdom", dialCode: "+44" },
@@ -118,6 +118,29 @@
     return "";
   }
 
+  function getPhoneCountryOptions() {
+    const source = typeof window.intlTelInput?.getCountryData === "function"
+      ? window.intlTelInput.getCountryData()
+      : fallbackPhoneCountryOptions;
+
+    const seen = new Set();
+    return source
+      .map((country) => ({
+        iso2: String(country.iso2 || "").toLowerCase(),
+        label: String(country.name || country.label || "").trim(),
+        dialCode: `+${String(country.dialCode || country.dial_code || "").trim()}`
+      }))
+      .filter((country) => country.iso2 && country.label && /^\+\d+/.test(country.dialCode))
+      .filter((country) => {
+        if (seen.has(country.iso2)) {
+          return false;
+        }
+        seen.add(country.iso2);
+        return true;
+      })
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }
+
   function setupPhoneField(form) {
     const countrySelect = form.querySelector("[data-phone-country]");
     if (!countrySelect || countrySelect.options.length) {
@@ -125,7 +148,7 @@
     }
 
     const initialCountry = getInitialCountryFromLocale() || "us";
-    phoneCountryOptions.forEach((country) => {
+    getPhoneCountryOptions().forEach((country) => {
       const option = document.createElement("option");
       option.value = country.dialCode;
       option.textContent = `${country.label} (${country.dialCode})`;
