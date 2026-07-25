@@ -226,6 +226,27 @@ a { color: inherit; }
 .phone-row select {
   cursor: pointer;
 }
+.consent-check {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  margin-top: 2px;
+  color: #555966;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: left;
+}
+.lead-form .consent-check input {
+  width: 24px;
+  height: 24px;
+  margin: 1px 0 0;
+  padding: 0;
+  border: 1px solid #c9c9c9;
+  border-radius: 0;
+  cursor: pointer;
+  appearance: auto;
+}
 .lead-form button { width: 100%; margin-top: 10px; }
 .form-status {
   min-height: 1.4em;

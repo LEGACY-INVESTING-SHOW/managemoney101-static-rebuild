@@ -143,12 +143,14 @@
     const email = String(data.get("contact[email]") || "");
     let phoneNumber = String(data.get("contact[phone_number]") || "");
     const timeZone = String(data.get("time_zone") || "");
+    const transactionalSmsConsent = data.get("transactional_sms_consent") === "yes" ? "yes" : "no";
 
     const payload = {
       first_name: firstName,
       email,
       phone_number: phoneNumber,
       time_zone: timeZone,
+      transactional_sms_consent: transactionalSmsConsent,
       source: "fbmasterclass",
       page_url: window.location.href,
       page_path: window.location.pathname,
@@ -160,7 +162,8 @@
       tracking_captured_at: storedTracking.captured_at || "",
       "contact[first_name]": firstName,
       "contact[email]": email,
-      "contact[phone_number]": phoneNumber
+      "contact[phone_number]": phoneNumber,
+      "contact[transactional_sms_consent]": transactionalSmsConsent
     };
 
     trackingKeys.forEach((key) => {
