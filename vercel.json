@@ -1,23 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/fbmasterclass",
-      "destination": "/taxtraining",
-      "permanent": true
-    },
-    {
-      "source": "/masterclassconfirmation",
-      "destination": "/taxtrainingconfirmation",
-      "permanent": true
-    },
-    {
-      "source": "/registered",
-      "destination": "/taxtrainingconfirmation",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/taxtraining",
