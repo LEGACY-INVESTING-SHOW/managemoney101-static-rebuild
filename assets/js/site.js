@@ -329,7 +329,7 @@
         const rawPhone = String(phoneInput?.value || "");
         const cleanedPhone = rawPhone.replace(/[^\d]/g, "");
 
-        if (cleanedPhone && cleanedPhone.length < 6) {
+        if (cleanedPhone.length < 6) {
           if (status) {
             status.textContent = "Please enter a valid phone number.";
             status.classList.remove("is-pending");
