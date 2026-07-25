@@ -151,7 +151,7 @@
       phone_number: phoneNumber,
       time_zone: timeZone,
       transactional_sms_consent: transactionalSmsConsent,
-      source: "fbmasterclass",
+      source: "taxtraining",
       page_url: window.location.href,
       page_path: window.location.pathname,
       confirmation_url: form.dataset.successUrl || form.action,
@@ -260,7 +260,7 @@
       first_name: payload.first_name || "",
       email: payload.email || "",
       phone: payload.phone_number || "",
-      source: payload.source || "fbmasterclass",
+      source: payload.source || "taxtraining",
       page_path: payload.page_path || window.location.pathname
     });
   }

@@ -2,8 +2,8 @@
 
 ## Outputs
 
-- `fbmasterclass/index.html`
-- `masterclassconfirmation/index.html`
+- `taxtraining/index.html`
+- `taxtrainingconfirmation/index.html`
 - `assets/css/styles.css`
 - `assets/js/site.js`
 - `assets/img/`
@@ -60,8 +60,8 @@ The original AddEvent calendar widget was replaced with a local `.ics` file:
 - Verified the first Vimeo facade replaces itself with an embedded player when clicked.
 - Verified local form submission routes to the rebuilt confirmation page.
 - Lighthouse local performance:
-  - `fbmasterclass`: 100
-  - `masterclassconfirmation`: 100
+  - `taxtraining`: 100
+  - `taxtrainingconfirmation`: 100
 
 ## Known Differences
 
@@ -73,7 +73,7 @@ The original AddEvent calendar widget was replaced with a local `.ics` file:
 
 The page paths are relative, not localhost or root-relative:
 
-- Double-click `fbmasterclass/index.html` to open the registration page.
-- Double-click `masterclassconfirmation/index.html` to open the confirmation page.
+- Double-click `taxtraining/index.html` to open the registration page.
+- Double-click `taxtrainingconfirmation/index.html` to open the confirmation page.
 
 The registration form action points to `/taxtrainingconfirmation`, so it also routes correctly once deployed on Vercel.
