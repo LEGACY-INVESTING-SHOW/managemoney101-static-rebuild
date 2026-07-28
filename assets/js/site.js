@@ -1,5 +1,5 @@
 (function () {
-  const target = new Date("2026-07-28T23:00:00Z").getTime();
+  const target = new Date("2026-07-30T23:00:00Z").getTime();
   const trackingKeys = [
     "utm_source",
     "utm_medium",
