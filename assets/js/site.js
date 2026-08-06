@@ -7,7 +7,9 @@
     "utm_term",
     "utm_content",
     "gclid",
-    "fbclid"
+    "fbclid",
+    "gbraid",
+    "wbraid"
   ];
   const trackingStorageKey = "mm101_tracking_params";
   const phoneCountryOptions = [
@@ -96,6 +98,27 @@
     return stored;
   }
 
+  function getCookieValue(name) {
+    const cookies = document.cookie ? document.cookie.split(";") : [];
+    const prefix = `${name}=`;
+
+    for (const cookie of cookies) {
+      const value = cookie.trim();
+      if (value.startsWith(prefix)) {
+        return decodeURIComponent(value.slice(prefix.length));
+      }
+    }
+
+    return "";
+  }
+
+  function getMetaCookiePayload(storedTracking) {
+    return {
+      fbp: getCookieValue("_fbp") || storedTracking.fbp || "",
+      fbc: getCookieValue("_fbc") || storedTracking.fbc || ""
+    };
+  }
+
   function setTimeZoneValue(form) {
     const timeZoneInput = form.querySelector('input[name="time_zone"]');
     if (!timeZoneInput) {
@@ -144,6 +167,7 @@
     let phoneNumber = String(data.get("contact[phone_number]") || "");
     const timeZone = String(data.get("time_zone") || "");
     const transactionalSmsConsent = data.get("transactional_sms_consent") === "yes" ? "yes" : "no";
+    const metaCookies = getMetaCookiePayload(storedTracking);
 
     const payload = {
       first_name: firstName,
@@ -160,6 +184,8 @@
       landing_page_url: storedTracking.landing_page_url || window.location.href,
       landing_page_path: storedTracking.landing_page_path || window.location.pathname,
       tracking_captured_at: storedTracking.captured_at || "",
+      fbp: metaCookies.fbp,
+      fbc: metaCookies.fbc,
       "contact[first_name]": firstName,
       "contact[email]": email,
       "contact[phone_number]": phoneNumber,
@@ -169,6 +195,13 @@
     trackingKeys.forEach((key) => {
       payload[key] = params.get(key) || storedTracking[key] || "";
     });
+
+    if (metaCookies.fbp || metaCookies.fbc) {
+      writeStoredTracking({
+        ...storedTracking,
+        ...metaCookies
+      });
+    }
 
     return payload;
   }
