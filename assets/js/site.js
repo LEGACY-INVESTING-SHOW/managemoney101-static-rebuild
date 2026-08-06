@@ -112,10 +112,30 @@
     return "";
   }
 
+  function getMetaTimestamp(storedTracking) {
+    const capturedAt = Date.parse(storedTracking.captured_at || "");
+    return Number.isFinite(capturedAt) ? capturedAt : Date.now();
+  }
+
+  function createFbpValue(storedTracking) {
+    const timestamp = getMetaTimestamp(storedTracking);
+    const randomValue = Math.floor(Math.random() * 2147483647);
+    return `fb.1.${timestamp}.${randomValue}`;
+  }
+
+  function createFbcValue(storedTracking) {
+    const fbclid = storedTracking.fbclid || new URLSearchParams(window.location.search).get("fbclid") || "";
+    if (!fbclid) {
+      return "";
+    }
+
+    return `fb.1.${getMetaTimestamp(storedTracking)}.${fbclid}`;
+  }
+
   function getMetaCookiePayload(storedTracking) {
     return {
-      fbp: getCookieValue("_fbp") || storedTracking.fbp || "",
-      fbc: getCookieValue("_fbc") || storedTracking.fbc || ""
+      fbp: getCookieValue("_fbp") || storedTracking.fbp || createFbpValue(storedTracking),
+      fbc: getCookieValue("_fbc") || storedTracking.fbc || createFbcValue(storedTracking)
     };
   }
 
