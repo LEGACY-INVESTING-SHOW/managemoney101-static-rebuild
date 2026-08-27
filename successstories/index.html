@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>A couple recent wins worth hearing</title>
-  <meta name="description" content="A couple recent wins worth hearing from ManageMoney101 students.">
+  <title>Member Stories | Legacy Wealth Blueprint</title>
+  <meta name="description" content="Recent Legacy Wealth Blueprint wins, testimonials, and redacted wealth snapshot examples organized by situation, income, and goal.">
+  <meta name="robots" content="index, follow">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -12,6 +13,7 @@
   'https://tracking.managemoney101.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KQ4R2LKP');</script>
   <!-- End Google Tag Manager -->
+  <script src="data/case-studies.js"></script>
   <script>
   var head = document.head;
   var script = document.createElement('script');
@@ -19,144 +21,1647 @@
   script.src = "https://t.managemoney101.com/v1/lst/universal-script?ph=99701b257ae8a5117ba5d7b516261da603bc86a49c0c42f398c619e251026c05&tag=!clicked&ref_url=" + encodeURI(document.URL);
   head.appendChild(script);
   </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
   <style>
     :root {
-      --navy: #172534;
-      --navy-2: #0e1924;
-      --cream: #f7d895;
-      --ink: #1c2733;
-      --paper: #f4f5f7;
-      --line: rgba(255, 255, 255, 0.12);
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --gold: #c9a961;
+      --gold-dark: #a88b4a;
+      --gold-soft: rgba(201, 169, 97, .10);
+      --gold-line: rgba(201, 169, 97, .28);
+      --cream: #faf7f2;
+      --cream-dark: #f5f0e8;
+      --txt: #0f172a;
+      --txt-2: #334155;
+      --muted: #64748b;
+      --light: #94a3b8;
+      --line: #e2e8f0;
+      --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+      --sans: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+      --ease: cubic-bezier(.16, 1, .3, 1);
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
     body {
       margin: 0;
-      font-family: "Poppins", Arial, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top, rgba(247, 216, 149, 0.18), transparent 28%),
-        linear-gradient(180deg, var(--navy-2) 0%, var(--navy) 22%, var(--paper) 22%, var(--paper) 100%);
+      background: #fff;
+      color: var(--txt);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    .wrap {
-      width: min(1080px, calc(100% - 32px));
-      margin: 0 auto;
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    button, select, input { font: inherit; color: inherit; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -.02em; }
+
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .narrow { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+
+    .section { padding: 104px 0; }
+    .section.tight { padding: 80px 0; }
+    .section.wall-section { padding-top: 62px; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--gold-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); flex: 0 0 auto; }
+    .eyebrow.center { justify-content: center; }
+
+    /* ---------- hero ---------- */
 
     .hero {
-      padding: 76px 0 60px;
-      color: #fff;
+      position: relative;
+      padding: 118px 0 100px;
       text-align: center;
+      background:
+        radial-gradient(900px 380px at 50% -8%, rgba(201, 169, 97, .16), transparent 70%),
+        linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 52%, #fff 100%);
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1.08;
-      color: #fff;
+    .hero h1 {
+      margin: 0 auto 20px;
+      max-width: 15ch;
+      font-size: clamp(40px, 5.4vw, 62px);
+      line-height: 1.04;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-dark); }
+
+    .lead {
+      max-width: 640px;
+      margin: 0 auto;
+      color: var(--txt-2);
+      font-size: 17px;
+      line-height: 1.72;
     }
 
-    .stories {
-      padding: 0 0 72px;
-    }
+    /* ---------- section headers ---------- */
 
-    .story-grid {
-      display: grid;
-      gap: 28px;
-    }
+    .head { max-width: 620px; margin-bottom: 40px; }
+    .head.label-only { margin-bottom: 26px; }
+    .head.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .head h2 { margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; }
+    .head p { margin: 14px 0 0; color: var(--muted); font-size: 16.5px; line-height: 1.7; }
 
-    .story-card {
-      padding: 18px;
-      border: 1px solid rgba(23, 37, 52, 0.08);
-      border-radius: 24px;
+    /* ---------- videos ---------- */
+
+    .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .video-card {
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
       background: #fff;
-      box-shadow: 0 20px 50px rgba(13, 25, 36, 0.08);
+      transition: border-color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
     }
-
+    .video-card:hover {
+      border-color: var(--gold-line);
+      transform: translateY(-3px);
+      box-shadow: 0 22px 48px -26px rgba(15, 23, 42, .3);
+    }
     .video-frame {
+      display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
       border: 0;
-      border-radius: 18px;
-      background: #000;
-      display: block;
-    }
-
-    .footer {
-      padding: 40px 0 56px;
+      border-radius: 13px;
       background: var(--navy);
-      color: #e8edf1;
+    }
+
+    /* ---------- filters ---------- */
+
+    /* the sticky bar is scoped to this zone so it releases once the wall ends */
+    .wall-zone { position: relative; background: var(--cream-dark); }
+
+    .filters {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(15, 23, 42, .08);
+      background: rgba(245, 240, 232, .88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(0, 210px) minmax(0, 210px) minmax(0, 210px) minmax(240px, 1fr) auto;
+      justify-content: start;
+      gap: 10px;
+      align-items: center;
+    }
+    .field { position: relative; display: block; }
+    .field select,
+    .field input {
+      width: 100%;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #fff;
+      font-size: 14.5px;
+      outline: none;
+      transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .field select {
+      padding: 0 36px 0 14px;
+      cursor: pointer;
+      appearance: none;
+    }
+    .field input { padding: 0 14px; }
+    .field select:focus,
+    .field input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px var(--gold-soft);
+    }
+    .field.sel::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      width: 7px;
+      height: 7px;
+      margin-top: -5px;
+      border-right: 1.6px solid var(--muted);
+      border-bottom: 1.6px solid var(--muted);
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+    .reset {
+      height: 46px;
+      padding: 0 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
       font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color .3s var(--ease), color .3s var(--ease);
+    }
+    .reset:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ---------- case studies ---------- */
+
+    .case-section { padding-bottom: 52px; }
+    .case-grid { columns: 2; column-gap: 22px; }
+    .case-card {
+      break-inside: avoid;
+      overflow: hidden;
+      width: 100%;
+      margin: 0 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 18px 42px -34px rgba(15, 23, 42, .35);
+    }
+    .shot-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: #fff;
+      cursor: zoom-in;
+    }
+    .case-shot {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fff;
+    }
+    .zoom-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 26px;
+      background: rgba(15, 23, 42, .78);
+    }
+    .zoom-modal.is-open { display: flex; }
+    .zoom-inner {
+      position: relative;
+      width: min(1120px, 100%);
+      max-height: calc(100vh - 52px);
+      overflow: auto;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 26px 80px rgba(0, 0, 0, .35);
+    }
+    .zoom-inner img { width: 100%; height: auto; }
+    .zoom-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 999px;
+      background: rgba(15, 23, 42, .82);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
     }
 
-    .footer p {
-      margin: 0 0 18px;
-    }
+    /* ---------- story wall ---------- */
 
-    .foot-links {
+    .wall-head {
       display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-size: 11px;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .wall-head h2 { margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; }
+    .count { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
+
+    .wall { columns: 3; column-gap: 20px; }
+
+    .card {
+      break-inside: avoid;
+      width: 100%;
+      margin: 0 0 20px;
+      padding: 26px 26px 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      transition: border-color .4s var(--ease), box-shadow .4s var(--ease);
+    }
+    .card:hover { border-color: var(--gold-line); box-shadow: 0 20px 44px -30px rgba(15, 23, 42, .32); }
+    .card.is-hidden { display: none; }
+
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .pill {
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .when { color: var(--light); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+
+    .card h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.26; }
+
+    .card blockquote {
+      position: relative;
+      margin: 0;
+      padding-left: 17px;
+      color: var(--txt-2);
+      font-size: 15px;
+      line-height: 1.68;
+    }
+    .card blockquote::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      width: 2px;
+      border-radius: 2px;
+      background: var(--gold-line);
     }
 
-    .foot-links a {
-      color: inherit;
-      text-decoration: none;
+    .by { display: flex; align-items: center; gap: 9px; margin: 18px 0 0; font-size: 13.5px; font-weight: 700; color: var(--navy); }
+    .by::before { content: ""; width: 14px; height: 1px; background: var(--gold); flex: 0 0 auto; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .tags span {
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--cream-dark);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .empty {
+      display: none;
+      padding: 56px 24px;
+      border: 1px dashed var(--line);
+      border-radius: 18px;
+      background: #fff;
+      text-align: center;
+    }
+    .empty.is-visible { display: block; }
+    .empty p { margin: 0; color: var(--muted); font-size: 15px; }
+    .empty button {
+      margin-top: 16px;
+      padding: 11px 24px;
+      border: 2px solid var(--navy);
+      border-radius: 999px;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ---------- disclosure ---------- */
+
+    .about h2 { margin: 0 0 26px; font-size: clamp(28px, 3.2vw, 38px); line-height: 1.14; }
+    .about p { margin: 0 0 20px; color: var(--txt-2); font-size: 16px; line-height: 1.8; }
+    .about p:last-child { margin-bottom: 0; }
+    .about .fine {
+      margin-top: 30px;
+      padding: 22px 26px;
+      border-left: 2px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.72;
+    }
+
+    /* ---------- footer ---------- */
+
+    .footer { padding: 64px 0 72px; background: var(--navy); color: #cbd5e1; font-size: 13.5px; line-height: 1.75; }
+    .footer p { margin: 0 0 20px; max-width: 78ch; }
+    .footer .addr { color: var(--light); }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 30px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, .1); font-size: 12.5px; font-weight: 600; }
+    .foot-links a { color: #e2e8f0; text-decoration: none; }
+    .foot-links a:hover { color: var(--gold); }
+
+    /* ---------- responsive ---------- */
+
+    @media (max-width: 1000px) {
+      .wall { columns: 2; }
+      .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .field.search { grid-column: 1 / -1; }
+      .reset { grid-column: 1 / -1; width: 100%; }
     }
 
     @media (max-width: 720px) {
-      .hero {
-        padding: 58px 0 42px;
-      }
+      .section { padding: 72px 0; }
+      .section.tight { padding: 58px 0; }
+      .hero { padding: 78px 0 62px; }
+      .lead { font-size: 16px; }
+      .video-grid { grid-template-columns: 1fr; gap: 16px; }
+      .wall { columns: 1; }
+      .wall-head { display: block; }
+      .count { display: block; margin-top: 8px; }
+      .filters { position: static; padding: 18px 0; }
+      .case-grid { columns: 1; }
+      .controls { grid-template-columns: 1fr; }
+      .field.search { grid-column: auto; }
+      .reset { grid-column: auto; width: 100%; }
+      .head { margin-bottom: 32px; }
+      .about .fine { padding: 18px 20px; }
+    }
 
-      .story-card {
-        padding: 14px;
-        border-radius: 18px;
-      }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
   <main>
+
     <section class="hero">
       <div class="wrap">
-        <h1>A couple recent wins worth hearing</h1>
+        <p class="eyebrow center">Member Stories</p>
+        <h1>Some Recent Wins Worth Seeing</h1>
+        <p class="lead">Browse redacted wealth snapshot screenshots and member updates by the situation closest to yours.</p>
       </div>
     </section>
 
-    <section class="stories">
-      <div class="wrap story-grid">
-        <article class="story-card">
-          <iframe class="video-frame" src="https://player.vimeo.com/video/1207907513?title=0&byline=0&portrait=0" title="Student Success Story 1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </article>
-
-        <article class="story-card">
-          <iframe class="video-frame" src="https://player.vimeo.com/video/1207906800?title=0&byline=0&portrait=0" title="Student Success Story 2" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </article>
-
-        <article class="story-card">
-          <iframe class="video-frame" src="https://player.vimeo.com/video/1124934002?title=0&byline=0&portrait=0" title="Student Success Story 3" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </article>
-
-        <article class="story-card">
-          <iframe class="video-frame" src="https://player.vimeo.com/video/1210332705?title=0&byline=0&portrait=0" title="Student Success Story 4" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </article>
+    <div class="wall-zone">
+    <section class="filters" aria-label="Filter member stories">
+      <div class="wrap">
+        <div class="controls">
+          <label class="field sel">
+            <select id="incomeFilter" aria-label="Filter by income"></select>
+          </label>
+          <label class="field sel">
+            <select id="profileFilter" aria-label="Filter by situation"></select>
+          </label>
+          <label class="field sel">
+            <select id="goalFilter" aria-label="Filter by goal"></select>
+          </label>
+          <label class="field search">
+            <input id="searchFilter" type="search" aria-label="Search stories" placeholder="Search tax, credit, real estate...">
+          </label>
+          <button class="reset" id="resetFilters" type="button">Clear all</button>
+        </div>
       </div>
     </section>
+
+    <section class="section wall-section case-section" aria-labelledby="case-title">
+      <div class="wrap">
+        <div class="wall-head">
+          <h2 id="case-title">Redacted snapshot screenshots</h2>
+          <span class="count" id="caseCount" aria-live="polite"></span>
+        </div>
+        <div class="case-grid" id="caseGrid"></div>
+      </div>
+    </section>
+
+    <section class="section wall-section" aria-labelledby="wall-title">
+      <div class="wrap">
+        <div class="wall-head">
+          <h2 id="wall-title">Member updates</h2>
+          <span class="count" id="matchCount" aria-live="polite"></span>
+        </div>
+        <div class="wall" id="proofGrid"></div>
+        <div class="empty" id="emptyState">
+          <p>No stories match that combination yet.</p>
+          <button type="button" id="emptyReset">Clear filters</button>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section tight" aria-label="Longer member stories">
+      <div class="wrap">
+        <div class="video-grid">
+          <article class="video-card"><iframe class="video-frame" src="https://player.vimeo.com/video/1207907513?title=0&amp;byline=0&amp;portrait=0" title="Member interview 1" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></article>
+          <article class="video-card"><iframe class="video-frame" src="https://player.vimeo.com/video/1207906800?title=0&amp;byline=0&amp;portrait=0" title="Member interview 2" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></article>
+          <article class="video-card"><iframe class="video-frame" src="https://player.vimeo.com/video/1124934002?title=0&amp;byline=0&amp;portrait=0" title="Member interview 3" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></article>
+          <article class="video-card"><iframe class="video-frame" src="https://player.vimeo.com/video/1210332705?title=0&amp;byline=0&amp;portrait=0" title="Member interview 4" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></article>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <div class="zoom-modal" id="zoomModal" aria-hidden="true">
+    <div class="zoom-inner" role="dialog" aria-modal="true" aria-label="Redacted wealth snapshot screenshot">
+      <button class="zoom-close" id="zoomClose" type="button" aria-label="Close screenshot preview">&times;</button>
+      <img id="zoomImage" alt="">
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="wrap">
-      <p>This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT /endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
-      <p>INCOME DISCLAIMER : Although we make every effort to accurately represent the services and/or products presented on this website, Preston Seo makes no assurance, representation or promise regarding future earnings or income, or that you will make any specific amount of money, or any money at all, or that you will not lose money. Earnings or income statements, or examples of earnings or income, represent estimates of what you may earn; however, there is no promise or guarantee that you may experience the same level of earnings or income. There is no assurance that any prior success or past results regarding earnings or income may be an indication of your future success or results.</p>
-      <p>Legacy Investing Show LLC,<br><br>1993 Dewar Dr<br>Suite 256<br>Rock Springs, WY 82901</p>
+      <p>Results shown are individual examples and are not a promise, guarantee, or representation that you will experience the same outcome. Some outcomes may be affected by factors outside the program, including income, timing, credit profile, tax situation, execution, and professional advice.</p>
+      <p>This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is not endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+      <p class="addr">Legacy Investing Show LLC<br>1993 Dewar Dr, Suite 256<br>Rock Springs, WY 82901</p>
       <div class="foot-links">
         <a href="https://www.firstairbnb.com/contactus">Contact Us</a>
         <a href="https://www.firstairbnb.com/privacypolicy">Privacy Policy</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    const proofItems = [
+      {
+        "title": "Tax refund after implementing the strategies",
+        "quote": "$20k tax refund after implementing the tax strategies and advice here. That was not solely because of this course but the course helped a lot. It helped me get off my rear and get more organized.",
+        "person": "Stephanie Dailey",
+        "date": "Mar 2026",
+        "type": "result",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "refund",
+          "STR"
+        ]
+      },
+      {
+        "title": "Credit score, from one utilization change",
+        "quote": "Before I got to Module 2, I used to wait for the statement balance and then pay it off in full. But after learning more, I started paying it down before the statement closes to lower my credit utilization - and it boosted my score by 50 points!",
+        "person": "Ivanka Sangria",
+        "date": "Jun 2025",
+        "type": "result",
+        "profiles": [
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "credit"
+        ],
+        "tags": [
+          "credit"
+        ]
+      },
+      {
+        "title": "FICO jump in under four weeks",
+        "quote": "Jumped my FICO score 35 points in less than 4 weeks with Experian Boost!",
+        "person": "Brian",
+        "date": "Nov 2025",
+        "type": "result",
+        "profiles": [
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "credit"
+        ],
+        "tags": [
+          "FICO"
+        ]
+      },
+      {
+        "title": "Cut a car payment entirely",
+        "quote": "Sold my expensive car and got a cheaper one. No more $760 per month payment!",
+        "person": "Jan Zafar",
+        "date": "Nov 2025",
+        "type": "result",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "debt"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "Three month check-in",
+        "quote": "I signed up for Prime corporate tax services and already have my tax plan in place for 2025 to keep my income within a 12% bracket... I officially created my first digital product and made 2 sales. I started a new job this month with a 15k per year pay increase. This workplace also has a better work life balance and working environment which is already contributing to better health and energy. With my new salary and the side work I already do, my base income for 2026 will be 100k+ for the first time ever!",
+        "person": "Leilani Stevens",
+        "date": "Nov 2025",
+        "type": "result",
+        "profiles": [
+          "business",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "income"
+        ]
+      },
+      {
+        "title": "Negotiated a card rate down",
+        "quote": "What a Pandora of knowledge. Sharing my small win, I was able to lower my Discover credit card interest rate from 13.49% to 9.9% for 6 months.",
+        "person": "Aperna Mittal Borum",
+        "date": "Aug 2025",
+        "type": "result",
+        "profiles": [
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "credit",
+          "debt"
+        ],
+        "tags": [
+          "credit"
+        ]
+      },
+      {
+        "title": "Debt restructure",
+        "quote": "Qualified for a 0% CC. Received it last week and paid off one of my 29% interest cards. Each slice of bread will make a loaf!",
+        "person": "Dan Kovacich",
+        "date": "Aug 2025",
+        "type": "result",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "credit",
+          "debt",
+          "real-estate"
+        ],
+        "tags": [
+          "debt",
+          "STR"
+        ]
+      },
+      {
+        "title": "Three week progress check-in",
+        "quote": "Calculated my financial freedom number. Implemented both Snowball and Snowflake methods to start paying off my highest-interest debt. Formed my first two business entities. Results so far: increased my credit score by +15 points in the past 2 weeks.",
+        "person": "Leilani Stevens",
+        "date": "Sep 2025",
+        "type": "result",
+        "profiles": [
+          "business",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "credit",
+          "debt",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "credit",
+          "debt"
+        ]
+      },
+      {
+        "title": "Finished the course and first STR",
+        "quote": "I used several of the resources from the course to identify about 3-5 potential STRs and a couple arbitrage Airbnbs, and after looking at the tax implications was able to determine that purchasing was a better option for me right now. After looking at several and modeling them out, I've found an amazing property exactly where I wanted it to be, and have a close date of August 14th! I intend to have it up and running by mid-late September.",
+        "person": "Sue Ulintz",
+        "date": "Jul 2026",
+        "type": "property",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "Airbnb",
+          "STR"
+        ]
+      },
+      {
+        "title": "STR Roadmap",
+        "quote": "I'm happy to announce (after a few months of searching) I've officially closed on my first short term rental (STR) investment property! I know this is just the starting point and still a lot of work ahead to get it listed but looking forward to it. Thanks to Sam Becze for all the dedication, support, and continued help!",
+        "person": "Michael Gallagher",
+        "date": "Jul 2026",
+        "type": "property",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "tax"
+        ],
+        "tags": [
+          "STR",
+          "rental"
+        ]
+      },
+      {
+        "title": "Got our first Airbnb posted",
+        "quote": "Got our first Airbnb posted. Home in Elk Grove, 4 bedrooms, 3 baths. Excited!",
+        "person": "Priscilla A Agbunag",
+        "date": "Dec 2025",
+        "type": "property",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "tax"
+        ],
+        "tags": [
+          "Airbnb"
+        ]
+      },
+      {
+        "title": "Putting the customized blueprint into action",
+        "quote": "Went over customized wealth blueprint with Jeff. Much kudos to Jeff! He was very thorough and provided lots of helpful information. Going to view rental properties tomorrow.",
+        "person": "Nim Shahid",
+        "date": "Feb 2026",
+        "type": "property",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate"
+        ],
+        "tags": [
+          "rental"
+        ]
+      },
+      {
+        "title": "We finished!",
+        "quote": "We just finished all the course content, and are looking forward to learning the ropes of Airbnb arbitrage!",
+        "person": "Daniel & Michelle Gibby",
+        "date": "Mar 2026",
+        "type": "property",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate"
+        ],
+        "tags": [
+          "Airbnb"
+        ]
+      },
+      {
+        "title": "Course Complete",
+        "quote": "Completed the course! Learned a lot! Have used an early payment to credit card before statement to reduce % of utilization. Worked like a charm.",
+        "person": "Jun Song",
+        "date": "Aug 2026",
+        "type": "money-move",
+        "profiles": [
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "credit",
+          "debt"
+        ],
+        "tags": [
+          "credit"
+        ]
+      },
+      {
+        "title": "W-4 revision submitted",
+        "quote": "I submitted my W-4 revision. I've been married for 15 years and I still had my withholding as if I was single. No need to keep giving the IRS a free loan.",
+        "person": "Dewan Studdard",
+        "date": "Jul 2026",
+        "type": "money-move",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "tax"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "Completed all modules - and acted on all of them",
+        "quote": "I have set up recurrent automatic investments for DCA, rebalanced my 401K portfolio, frozen my credit with the 3 credit bureaus, and asked about the back door Roth IRA option. My next step is to establish a 2-3 year cash reserve fund.",
+        "person": "Valerie Ann Hopkins",
+        "date": "Mar 2026",
+        "type": "money-move",
+        "profiles": [
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "credit",
+          "retirement"
+        ],
+        "tags": [
+          "credit",
+          "Roth",
+          "401(k)"
+        ]
+      },
+      {
+        "title": "First covered calls and a backdoor Roth",
+        "quote": "I am very proud of myself for taking action on what I learned. I opened and contributed to a Roth IRA via backdoor for both 2025 and 2026 to the max limit. While I have a decent 401K, I hadn't looked into any other ways to prepare for my retirement before. Happy I finally took action!",
+        "person": "Sunny Davis",
+        "date": "Mar 2026",
+        "type": "money-move",
+        "profiles": [
+          "retired",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "retirement",
+          "tax"
+        ],
+        "tags": [
+          "Roth",
+          "401(k)"
+        ]
+      },
+      {
+        "title": "Celebrating financial baby steps",
+        "quote": "I created a budget plan and automated payments to pay off my highest interest debt within 8 months. I did not panic while I was setting up the budget sheet - it actually felt like such a gift to myself to get this intimate with my finances!",
+        "person": "Leilani Stevens",
+        "date": "Sep 2025",
+        "type": "money-move",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "debt"
+        ],
+        "tags": [
+          "debt"
+        ]
+      },
+      {
+        "title": "Getting moving",
+        "quote": "We've joined, and now have watched 3 of the modules taking notes as we go along. Boy, did I learn a lot about credit! I never knew that paying off my credit card each month did not guarantee that my credit score was stellar. Tonight, we worked at raising the credit limit on all our cards.",
+        "person": "Maureen & Dave DeFrance",
+        "date": "Aug 2026",
+        "type": "money-move",
+        "profiles": [
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "credit"
+        ],
+        "tags": [
+          "credit"
+        ]
+      },
+      {
+        "title": "Small wins",
+        "quote": "Reorganized finances, moved small money from places, moved savings to a high-interest savings account above 4%, and started migrating finance tracking to Monarch.",
+        "person": "Shelley Stone",
+        "date": "Apr 2025",
+        "type": "money-move",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity"
+        ],
+        "tags": [
+          "Monarch"
+        ]
+      },
+      {
+        "title": "Business strategy session completed",
+        "quote": "With thanks to Preston for negotiating fair prices for Legacy Wealth members, I had a great consultation with Grey Sorenson from Prime Services. He was knowledgeable, professional and patient and helped me set the order of operations that allowed immediate tax gains and asset protection in this calendar year. Though I could try to take these tasks on myself, it's a relief to have experts file the business for me, tied to a trust - so that tax year 2025 looks a whole lot better than prior years.",
+        "person": "Lynn Herrington",
+        "date": "Oct 2025",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "STR",
+          "trust"
+        ]
+      },
+      {
+        "title": "Prime",
+        "quote": "I'm excited to say I signed up with Prime. I have been wanting to do my Trust and Will for some time. Prime made understanding the process and creating my LLC easy. It's really awesome that Preston collaborated with such a great company and we receive a discount on their services.",
+        "person": "Jessica Gadzia",
+        "date": "Sep 2025",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "LLC",
+          "trust"
+        ]
+      },
+      {
+        "title": "Finished courses and questionnaire",
+        "quote": "Finally finished all the courses - amazing content. Learned so much. Completed the questionnaire. Also set up LLCs for rentals with Prime. And met with a tax advisor at Prime. And started my estate plan. Making progress!",
+        "person": "Sharon",
+        "date": "Dec 2025",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "rental",
+          "LLC",
+          "estate plan"
+        ]
+      },
+      {
+        "title": "Many wins last week",
+        "quote": "As we continue to learn more about implementing key strategies and investing, our paradigm has done a complete 180 regarding how to retain more of our earned income and invest smarter, which is helping to position ourselves in a much better place financially. We want to encourage you all to keep moving towards your freedom goals as we all continue on this legacy wealth journey.",
+        "person": "Joel & Aleta Pollard",
+        "date": "Apr 2025",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "STR",
+          "income"
+        ]
+      },
+      {
+        "title": "The ball is rolling",
+        "quote": "My husband and I just completed our courses and questionnaire! Our LLCs are set up, we're opening a business account, and we talk to Incite Tax tomorrow. The path is paved and we are ready to ride it!",
+        "person": "Elizabeth Schlankey",
+        "date": "Mar 2026",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "LLC"
+        ]
+      },
+      {
+        "title": "Getting going!",
+        "quote": "Just excited - 8 days in and we started our LLC process and learned so much from our session with Prime! Getting estate planning set up and excited about what the future looks like with this info and these tools at our fingertips!",
+        "person": "Cheryse Burgos Santos",
+        "date": "Sep 2025",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "LLC",
+          "estate plan"
+        ]
+      },
+      {
+        "title": "Four things done in one month",
+        "quote": "Finished the wealth building course and the questionnaire, and over halfway through the arbitrage course. Set up an LLC and bank account, started my estate plan, and scheduled a tax strategy call.",
+        "person": "Benjamin Morris",
+        "date": "Dec 2025",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "STR",
+          "LLC",
+          "estate plan"
+        ]
+      },
+      {
+        "title": "Tax strategy session",
+        "quote": "Just finished up with my session and whew. Really stepping out of my comfort zone with all of this. But I'm proud of myself for taking this big step and change for myself and I'm excited to see where this goes and leads to!",
+        "person": "Kimberly Kohlhaas",
+        "date": "Sep 2025",
+        "type": "structure",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "STR"
+        ]
+      },
+      {
+        "title": "Greetings from AZ",
+        "quote": "I'm super excited about the numerous applicable tax strategies I've heard so far - makes so much sense vs what I've been doing wrong for so long. I'm super impressed with the organization of material presented so far: to the point, very well structured, organized, seems geared towards busy people. Powerful tools available, people resources available through messaging and coaching. Truly this program is a blessing! Only wish I started sooner, but better now than never.",
+        "person": "Cathy Nguyen",
+        "date": "Dec 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "STR",
+          "coaching"
+        ]
+      },
+      {
+        "title": "Loving the LWB!",
+        "quote": "I am impressed with the amount of great content and the wealth of knowledge that Preston and his team are sharing with us. The other night I went through Options Trading and it reminded me of my university classes, but this time the way Preston explained it, with the real estate example, made it so much easier to grasp - and I loved the fact you can earn solid cashflow through selling options.",
+        "person": "Pedro Martinez Del Rio",
+        "date": "Mar 2026",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "estate plan",
+          "cash flow"
+        ]
+      },
+      {
+        "title": "On the 3-Day Tax Challenge",
+        "quote": "I want to confirm that it is absolutely worth the time and investment. The speakers were fantastic, offering tons of cool insights and perspectives that are a powerful addition to the LWB curriculum. The presentation materials were also top-notch. While it's a lot of information to process, the overall value is immense!",
+        "person": "Brady Bai",
+        "date": "Nov 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "tax"
+        ],
+        "tags": [
+          "tax"
+        ]
+      },
+      {
+        "title": "All phases complete",
+        "quote": "Wow! There is some great info found in these modules and I'm grateful to be a part of this program. I've learned a LOT! If you feel like you're stuck or think you're too slow getting through these modules, don't quit, it's worth it.",
+        "person": "Trey Waller",
+        "date": "Aug 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "All modules and LLC setup complete",
+        "quote": "I've learned so much and feel like I have a better understanding of my path forward to financial freedom. For those just starting, hang in there. It's a lot of content to get through, but if you chip at it a little each day, you'll get there. There's plenty of valuable information, so absorb it and try to implement it into your routine.",
+        "person": "Kyle Wilson",
+        "date": "Oct 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "LLC"
+        ]
+      },
+      {
+        "title": "Aloha from Hawaii",
+        "quote": "I have been following The Legacy Investing Show for a couple of years now. To have the opportunity to learn these wealth secrets, and the support and tools all in one place, is a dream come true. So grateful!",
+        "person": "Larissa N Hekau",
+        "date": "Sep 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "A big step towards financial freedom",
+        "quote": "I've started the program about two weekends ago. The foundational materials are so detailed and full of insights, and I enjoyed my first coaching call as well. Thanks Preston for the content, and coaches Brandon and Jeff for the inputs.",
+        "person": "Roderick Fanou",
+        "date": "Nov 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "tax"
+        ],
+        "tags": [
+          "coaching"
+        ]
+      },
+      {
+        "title": "Hello from the Bay Area",
+        "quote": "I am on Phase 5 of the curriculum and I am so grateful for this program. Thank you!",
+        "person": "Tia Hutchinson",
+        "date": "Aug 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "Greetings from Orange County",
+        "quote": "I recently enrolled in this program and am already impressed by how well-organized and comprehensive it is.",
+        "person": "Albert Aparicio",
+        "date": "May 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "Course complete",
+        "quote": "This feels like a tremendous accomplishment. We're fine-tuning Monarch this afternoon and learning to populate the net worth calculator to gain perspective on how we should take our next steps towards real estate investing. We're so grateful for the content in this course. Next level!",
+        "person": "Alex Herring",
+        "date": "Mar 2026",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "estate plan",
+          "Monarch"
+        ]
+      },
+      {
+        "title": "First week",
+        "quote": "So happy to be here! Finished Phase 1. Consolidating finances into Monarch. Met with Prime. Opening a HYSA. So encouraged. Love the videos, support calls, quality referrals, and connections!",
+        "person": "Lindsay Purdie",
+        "date": "Jun 2026",
+        "type": "program",
+        "profiles": [
+          "business",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "Monarch",
+          "HYSA"
+        ]
+      },
+      {
+        "title": "Getting back on track",
+        "quote": "I wish this was taught in schools. I wish this was taught to me before I had my first job at 14. But I know that if I make the right moves now and into the future, I'll be able to break the cycle of poverty in my family, and actually generate wealth not just for me, but possibly for future generations.",
+        "person": "Christopher Joya",
+        "date": "Jul 2026",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "tax"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "Greetings from Utah",
+        "quote": "When I finally decided something has to change I came across another ad for Preston's webinar. I signed up - again - but this time I made the time to attend. For the first time in a long time I felt hopeful of the future. I discussed it with my wife and we met with a Legacy Wealth rep. Now we are both here no longer feeling trapped, but hopeful we can live the life we've always wanted but felt was out of our reach.",
+        "person": "Dustin Salerno",
+        "date": "Oct 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "clarity",
+          "tax"
+        ],
+        "tags": [
+          "member win"
+        ]
+      },
+      {
+        "title": "End of October review",
+        "quote": "I am looking at money and tax structure in a new light after the course material. I am seeing how structuring finances the right way through business entities will save taxpayers thousands of dollars and how they can upscale every aspect of their life using this strategy. It is opening up so many opportunities to grow.",
+        "person": "Lauren T",
+        "date": "Nov 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate",
+          "structure",
+          "tax"
+        ],
+        "tags": [
+          "tax",
+          "STR"
+        ]
+      },
+      {
+        "title": "Eye-opening",
+        "quote": "Tuned in live on Sunday and it was eye opening how some of the things introduced just aren't knowledge everyone should know - especially if you make good income and are still living paycheck to paycheck with some savings and investments on the side.",
+        "person": "Kevin Shih",
+        "date": "Jul 2025",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "retired",
+          "self-employed",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity"
+        ],
+        "tags": [
+          "income"
+        ]
+      },
+      {
+        "title": "More time or money?",
+        "quote": "So excited to join this program and bring efficiency to our financial life. I always thought there had to be better strategies than what we were doing. Now I see there are and can't wait to implement them.",
+        "person": "Amy L Dean-Wojcik",
+        "date": "Aug 2026",
+        "type": "program",
+        "profiles": [
+          "business",
+          "real-estate",
+          "w2"
+        ],
+        "goals": [
+          "cashflow",
+          "clarity",
+          "real-estate"
+        ],
+        "tags": [
+          "STR"
+        ]
+      }
+    ];
+
+    const typeLabels = {
+      result: "Reported numbers",
+      property: "Property",
+      "money-move": "Money move",
+      structure: "Tax &amp; structure",
+      program: "Progress update"
+    };
+
+    const incomeLabels = {
+      "under-100k": "Under $100k",
+      "100-150k": "$100k-$150k",
+      "150-250k": "$150k-$250k",
+      "250-500k": "$250k-$500k",
+      "500k-plus": "$500k+",
+      unknown: "Income not listed"
+    };
+
+    const profileLabels = {
+      business: "Business owner",
+      "self-employed": "Self-employed / 1099",
+      "real-estate": "Real estate investor",
+      retirement: "Retirement planning",
+      retired: "Retired / legacy planning",
+      w2: "W-2 income"
+    };
+
+    const goalLabels = {
+      tax: "Reduce taxes",
+      credit: "Improve credit",
+      debt: "Pay down debt",
+      cashflow: "Create cash flow",
+      "real-estate": "Buy or launch property",
+      retirement: "Retirement / Roth / 401(k)",
+      structure: "Entity or estate setup",
+      clarity: "Get financial clarity"
+    };
+
+    const caseStudyItems = window.caseStudyItems || [];
+    const allItems = proofItems.concat(caseStudyItems);
+    const caseGrid = document.getElementById("caseGrid");
+    const caseCount = document.getElementById("caseCount");
+    const grid = document.getElementById("proofGrid");
+    const matchCount = document.getElementById("matchCount");
+    const emptyState = document.getElementById("emptyState");
+    const incomeFilter = document.getElementById("incomeFilter");
+    const profileFilter = document.getElementById("profileFilter");
+    const goalFilter = document.getElementById("goalFilter");
+    const searchFilter = document.getElementById("searchFilter");
+    const zoomModal = document.getElementById("zoomModal");
+    const zoomImage = document.getElementById("zoomImage");
+    const zoomClose = document.getElementById("zoomClose");
+
+    const state = { income: "all", profile: "all", goal: "all", query: "" };
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[char]));
+    }
+
+    function countBy(key, value) {
+      return allItems.filter((item) => {
+        const field = item[key];
+        return Array.isArray(field) ? field.includes(value) : field === value;
+      }).length;
+    }
+
+    function buildSelect(select, labels, key, anyLabel) {
+      const opts = [`<option value="all">${anyLabel}</option>`].concat(
+        Object.entries(labels)
+          .filter(([value]) => countBy(key, value) > 0)
+          .map(([value, label]) => `<option value="${value}">${label} (${countBy(key, value)})</option>`)
+      );
+      select.innerHTML = opts.join("");
+    }
+
+    function matches(item) {
+      if (state.income !== "all" && item.incomeBand !== state.income) return false;
+      if (state.profile !== "all" && !(item.profiles || []).includes(state.profile)) return false;
+      if (state.goal !== "all" && !(item.goals || []).includes(state.goal)) return false;
+      if (state.query) {
+        const haystack = [
+          item.title,
+          item.quote,
+          item.summary,
+          item.member,
+          item.person,
+          (item.tags || []).join(" "),
+          (item.profiles || []).join(" "),
+          (item.goals || []).join(" ")
+        ].join(" ").toLowerCase();
+        if (!haystack.includes(state.query)) return false;
+      }
+      return true;
+    }
+
+    function labelList(labels, values) {
+      return (values || []).map((value) => labels[value] || value);
+    }
+
+    function caseHtml(item) {
+      return `
+        <article class="case-card">
+          <button class="shot-button" type="button" data-image="${escapeHtml(item.image)}" data-title="${escapeHtml(item.title)}" aria-label="Open redacted screenshot for ${escapeHtml(item.member)}">
+            <img class="case-shot" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.member)} redacted wealth snapshot crop" loading="lazy">
+          </button>
+        </article>`;
+    }
+
+    function cardHtml(item) {
+      const tags = (item.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+      return `
+        <article class="card" data-id="${escapeHtml(item.title + item.person)}">
+          <div class="card-top">
+            <span class="pill">${typeLabels[item.type] || escapeHtml(item.type)}</span>
+            <span class="when">${escapeHtml(item.date || "")}</span>
+          </div>
+          <h3>${escapeHtml(item.title)}</h3>
+          <blockquote>${escapeHtml(item.quote)}</blockquote>
+          <p class="by">${escapeHtml(item.person)}</p>
+          ${tags ? `<div class="tags">${tags}</div>` : ""}
+        </article>`;
+    }
+
+    function render() {
+      const visibleCases = caseStudyItems.filter(matches);
+      const visibleProof = proofItems.filter(matches);
+      caseGrid.innerHTML = visibleCases.map(caseHtml).join("");
+      grid.innerHTML = visibleProof.map(cardHtml).join("");
+      caseCount.textContent = visibleCases.length === caseStudyItems.length
+        ? `Showing ${caseStudyItems.length} snapshot examples`
+        : `${visibleCases.length} of ${caseStudyItems.length} snapshot examples`;
+      matchCount.textContent = visibleProof.length === proofItems.length
+        ? `Showing all ${proofItems.length} updates`
+        : `${visibleProof.length} of ${proofItems.length} updates`;
+      emptyState.classList.toggle("is-visible", visibleCases.length === 0 && visibleProof.length === 0);
+    }
+
+    function resetAll() {
+      state.income = "all";
+      state.profile = "all";
+      state.goal = "all";
+      state.query = "";
+      incomeFilter.value = "all";
+      profileFilter.value = "all";
+      goalFilter.value = "all";
+      searchFilter.value = "";
+      render();
+    }
+
+    function openZoom(src, title) {
+      zoomImage.src = src;
+      zoomImage.alt = title;
+      zoomModal.classList.add("is-open");
+      zoomModal.setAttribute("aria-hidden", "false");
+      zoomClose.focus();
+    }
+
+    function closeZoom() {
+      zoomModal.classList.remove("is-open");
+      zoomModal.setAttribute("aria-hidden", "true");
+      zoomImage.removeAttribute("src");
+      zoomImage.alt = "";
+    }
+
+    incomeFilter.addEventListener("change", () => { state.income = incomeFilter.value; render(); });
+    profileFilter.addEventListener("change", () => { state.profile = profileFilter.value; render(); });
+    goalFilter.addEventListener("change", () => { state.goal = goalFilter.value; render(); });
+    searchFilter.addEventListener("input", () => { state.query = searchFilter.value.trim().toLowerCase(); render(); });
+    caseGrid.addEventListener("click", (event) => {
+      const button = event.target.closest(".shot-button");
+      if (!button) return;
+      openZoom(button.dataset.image, button.dataset.title || "Redacted wealth snapshot screenshot");
+    });
+    zoomClose.addEventListener("click", closeZoom);
+    zoomModal.addEventListener("click", (event) => {
+      if (event.target === zoomModal) closeZoom();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && zoomModal.classList.contains("is-open")) closeZoom();
+    });
+
+    document.getElementById("resetFilters").addEventListener("click", resetAll);
+    document.getElementById("emptyReset").addEventListener("click", resetAll);
+
+    buildSelect(incomeFilter, incomeLabels, "incomeBand", "Any income");
+    buildSelect(profileFilter, profileLabels, "profiles", "Any situation");
+    buildSelect(goalFilter, goalLabels, "goals", "Any goal");
+    render();
+  </script>
 </body>
 </html>

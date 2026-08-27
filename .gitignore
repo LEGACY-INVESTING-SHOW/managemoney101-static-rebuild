@@ -1,2 +1,5 @@
 .DS_Store
 .vercel
+.private/
+tmp-drive-*.html
+tmp-drive-*.json
