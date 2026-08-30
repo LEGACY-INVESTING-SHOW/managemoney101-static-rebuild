@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Member Stories | Legacy Wealth Blueprint</title>
+  <title>Success Stories | Legacy Wealth Blueprint</title>
   <meta name="description" content="Recent Legacy Wealth Blueprint wins, testimonials, and redacted wealth snapshot examples organized by situation, income, and goal.">
   <meta name="robots" content="index, follow">
   <!-- Google Tag Manager -->
@@ -13,7 +13,7 @@
   'https://tracking.managemoney101.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KQ4R2LKP');</script>
   <!-- End Google Tag Manager -->
-  <script src="data/case-studies.js"></script>
+  <script src="/successstories/data/case-studies.js"></script>
   <script>
   var head = document.head;
   var script = document.createElement('script');
@@ -90,7 +90,7 @@
 
     .hero {
       position: relative;
-      padding: 118px 0 100px;
+      padding: 108px 0 92px;
       text-align: center;
       background:
         radial-gradient(900px 380px at 50% -8%, rgba(201, 169, 97, .16), transparent 70%),
@@ -98,10 +98,10 @@
     }
 
     .hero h1 {
-      margin: 0 auto 20px;
-      max-width: 15ch;
-      font-size: clamp(40px, 5.4vw, 62px);
-      line-height: 1.04;
+      margin: 0 auto;
+      max-width: 760px;
+      font-size: clamp(44px, 4.8vw, 68px);
+      line-height: 1.07;
     }
     .hero h1 em { font-style: italic; color: var(--gold-dark); }
 
@@ -443,14 +443,12 @@
 
     <section class="hero">
       <div class="wrap">
-        <p class="eyebrow center">Member Stories</p>
         <h1>Some Recent Wins Worth Seeing</h1>
-        <p class="lead">Browse redacted wealth snapshot screenshots and member updates by the situation closest to yours.</p>
       </div>
     </section>
 
     <div class="wall-zone">
-    <section class="filters" aria-label="Filter member stories">
+    <section class="filters" aria-label="Filter success stories">
       <div class="wrap">
         <div class="controls">
           <label class="field sel">
@@ -473,8 +471,7 @@
     <section class="section wall-section case-section" aria-labelledby="case-title">
       <div class="wrap">
         <div class="wall-head">
-          <h2 id="case-title">Redacted snapshot screenshots</h2>
-          <span class="count" id="caseCount" aria-live="polite"></span>
+          <h2 id="case-title">Real Wealth Snapshot Examples</h2>
         </div>
         <div class="case-grid" id="caseGrid"></div>
       </div>
@@ -483,7 +480,7 @@
     <section class="section wall-section" aria-labelledby="wall-title">
       <div class="wrap">
         <div class="wall-head">
-          <h2 id="wall-title">Member updates</h2>
+          <h2 id="wall-title">Short Interviews</h2>
           <span class="count" id="matchCount" aria-live="polite"></span>
         </div>
         <div class="wall" id="proofGrid"></div>
@@ -495,7 +492,7 @@
     </section>
     </div>
 
-    <section class="section tight" aria-label="Longer member stories">
+    <section class="section tight" aria-label="Longer success stories">
       <div class="wrap">
         <div class="video-grid">
           <article class="video-card"><iframe class="video-frame" src="https://player.vimeo.com/video/1207907513?title=0&amp;byline=0&amp;portrait=0" title="Member interview 1" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></article>
@@ -1515,7 +1512,6 @@
     const caseStudyItems = window.caseStudyItems || [];
     const allItems = proofItems.concat(caseStudyItems);
     const caseGrid = document.getElementById("caseGrid");
-    const caseCount = document.getElementById("caseCount");
     const grid = document.getElementById("proofGrid");
     const matchCount = document.getElementById("matchCount");
     const emptyState = document.getElementById("emptyState");
@@ -1602,12 +1598,9 @@
       const visibleProof = proofItems.filter(matches);
       caseGrid.innerHTML = visibleCases.map(caseHtml).join("");
       grid.innerHTML = visibleProof.map(cardHtml).join("");
-      caseCount.textContent = visibleCases.length === caseStudyItems.length
-        ? `Showing ${caseStudyItems.length} snapshot examples`
-        : `${visibleCases.length} of ${caseStudyItems.length} snapshot examples`;
       matchCount.textContent = visibleProof.length === proofItems.length
-        ? `Showing all ${proofItems.length} updates`
-        : `${visibleProof.length} of ${proofItems.length} updates`;
+        ? `Showing all ${proofItems.length} short interviews`
+        : `${visibleProof.length} of ${proofItems.length} short interviews`;
       emptyState.classList.toggle("is-visible", visibleCases.length === 0 && visibleProof.length === 0);
     }
 
@@ -1657,7 +1650,6 @@
 
     document.getElementById("resetFilters").addEventListener("click", resetAll);
     document.getElementById("emptyReset").addEventListener("click", resetAll);
-
     buildSelect(incomeFilter, incomeLabels, "incomeBand", "Any income");
     buildSelect(profileFilter, profileLabels, "profiles", "Any situation");
     buildSelect(goalFilter, goalLabels, "goals", "Any goal");
