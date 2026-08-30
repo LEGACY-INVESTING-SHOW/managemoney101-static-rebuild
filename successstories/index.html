@@ -1569,11 +1569,18 @@
       return (values || []).map((value) => labels[value] || value);
     }
 
+    function successStoryAsset(path) {
+      if (!path) return "";
+      if (/^(https?:)?\/\//.test(path) || path.startsWith("/")) return path;
+      return `/successstories/${path.replace(/^\/+/, "")}`;
+    }
+
     function caseHtml(item) {
+      const image = successStoryAsset(item.image);
       return `
         <article class="case-card">
-          <button class="shot-button" type="button" data-image="${escapeHtml(item.image)}" data-title="${escapeHtml(item.title)}" aria-label="Open redacted screenshot for ${escapeHtml(item.member)}">
-            <img class="case-shot" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.member)} redacted wealth snapshot crop" loading="lazy">
+          <button class="shot-button" type="button" data-image="${escapeHtml(image)}" data-title="${escapeHtml(item.title)}" aria-label="Open redacted screenshot for ${escapeHtml(item.member)}">
+            <img class="case-shot" src="${escapeHtml(image)}" alt="${escapeHtml(item.member)} redacted wealth snapshot crop" loading="lazy">
           </button>
         </article>`;
     }
